@@ -186,7 +186,7 @@ while True:
 		while len(roll_num) != 5 and (user_cg = find_cg(year + dep + roll_num) != -1):
 			print "Please enter valid last 5 digits"
 			roll_num = raw_input("Enter valid last 5 digits of your roll number again:  ")
-		user_cg = find_cg(year + dep + roll_num)
+		#user_cg = find_cg(year + dep + roll_num)
 		degree_choice = "3"
 	else:
 		degree_choice = raw_input("Enter choice : '1' for 4 years only, '2' for 5 years only, '3' for both :  ")
