@@ -41,6 +41,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 		rollno = str(year) + str(dep) + str(roll_count)
 		url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + rollno
 		name_flag = False
+		flag = False
 		
 		try:
 			r = requests.get(url_to_scrape) 
