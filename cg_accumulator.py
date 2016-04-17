@@ -47,6 +47,7 @@ def cg_accumulate(year, dep, degree_choice):
 			print "Retrying...."
 			student_count -= 1
 			roll_count -= 1
+			continue
 		soup = BeautifulSoup(r.text, "html.parser") 
 
 		with open(fname, "w") as text_file:
