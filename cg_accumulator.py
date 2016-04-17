@@ -33,6 +33,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 	cg_total = 0.00
 	sg_total = 0.00
 	bad_count = 0
+	sg_list = []
 
 	while True:
 		roll_count += 1
@@ -76,7 +77,6 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 			if sg_cg_choice == "1":
 				if line.find("CGPA") != -1:
 					if line[4] != "<" and is_number(line[31:35]):
-						#print line[31:35]
 						print "Roll Num : " + str(rollno) + "	CG : " + str(line[31:35]) + "	Name : " + str(name)
 						cg_total += float(line[31:35])
 						break
@@ -85,8 +85,16 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 					print "Roll Num : " + str(rollno) + "	SGPA in most recent semester : " + str(line[25:29]) + "	Name : " + str(name)
 					sg_total += float(line[25:29])
 					break
+			elif sg_cg_choice == "3":
+				if line.find("SGPA") != -1 and is_number(line[25:29]):
+					sg_list.append(str(line[25:29]))
+		
+		if sg_cg_choice == "3":
+			print "Roll Num : " + str(rollno) + "	SGPA list : " + str(sg_list) + "	Name : " + str(name)
+			del sg_list[:]
+
  					
-		if flag and bad_count >= 5 and (degree_choice != "3" or roll_count > 30000):
+		if flag and bad_count >= 5 and (degree_choice != "3" or roll_count > 30000 or msc_dep):
 			break
 		
 		# Will not be executed for MSc Integrated Courses
@@ -109,7 +117,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 
 
 
-print "Welcome to CG Accumulator"
+print "*** Welcome to CG Accumulator ***"
 
 departments = ["AE", "AG", "AR", "BT", "CE", "CH", "CS", "CY", "EC", "EE", "EX", "GG", "HS", "IE", "IM", "MA", "ME", "MF", "MI", "MT", "NA", "PH", "QD"]
 years = ["12","13","14","15"]
@@ -132,8 +140,8 @@ while True:
 		print "Please enter a valid choice!"
 		degree_choice = raw_input("Enter valid choice again : ")
 	print ""
-	sg_cg_choice = raw_input("Do you want CG list (enter '1') or most recent SG list (enter '2')? :  ")
-	while sg_cg_choice not in ["1","2"]:
+	sg_cg_choice = raw_input("Do you want CG list (enter '1') or most recent SG list (enter '2') or entire SG history (enter '3')? :  ")
+	while sg_cg_choice not in ["1", "2", "3"]:
 		print "Please enter a valid choice!"
 		sg_cg_choice = raw_input("Enter valid choice again : ")
 	break
@@ -144,6 +152,7 @@ print "Please wait while results are being accumulated, this may take a few minu
 print "Meanwhile, minimize this screen and think about what you are doing with your life."
 print ""
 var = cg_accumulate(year, dep, degree_choice,sg_cg_choice)
+print ""
 key = raw_input("Press Enter to exit")
 
 
