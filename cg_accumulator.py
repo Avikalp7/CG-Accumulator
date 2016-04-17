@@ -189,6 +189,7 @@ while True:
 		user_cg = find_cg(year + dep + roll_num)
 		degree_choice = "3"
 	else:
+		print ""
 		degree_choice = raw_input("Enter choice : '1' for 4 years only, '2' for 5 years only, '3' for both :  ")
 		while degree_choice not in ["1", "2", "3"]:
 			print "Please enter a valid choice!"
