@@ -13,7 +13,7 @@ def is_number(s):
     except ValueError:
         return False
 
-def cg_accumulate(year, dep, degree_choice):
+def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 	
 	# List of departments with Integrated M.Sc. (5 year courses)
 	msc_dep_list = ["GG", "EX", "MA", "CY", "HS", "PH"]
@@ -31,6 +31,7 @@ def cg_accumulate(year, dep, degree_choice):
 	student_count = 0
 	flag = False
 	cg_total = 0.00
+	sg_total = 0.00
 	bad_count = 0
 
 	while True:
@@ -72,13 +73,19 @@ def cg_accumulate(year, dep, degree_choice):
 				name = line[24:idx]
 				name_flag = True
 
-
-			if line.find("CGPA") != -1:
-				if line[4] != "<" and is_number(line[31:35]):
-					#print line[31:35]
-					print "Roll Num : " + str(rollno) + "	CG : " + str(line[31:35]) + "	Name : " + str(name)
-					cg_total += float(line[31:35])
+			if sg_cg_choice == "1":
+				if line.find("CGPA") != -1:
+					if line[4] != "<" and is_number(line[31:35]):
+						#print line[31:35]
+						print "Roll Num : " + str(rollno) + "	CG : " + str(line[31:35]) + "	Name : " + str(name)
+						cg_total += float(line[31:35])
+						break
+			elif sg_cg_choice == "2":
+				if line.find("SGPA") != -1 and is_number(line[25:29]):
+					print "Roll Num : " + str(rollno) + "	SGPA in most recent semester : " + str(line[25:29]) + "	Name : " + str(name)
+					sg_total += float(line[25:29])
 					break
+ 					
 		if flag and bad_count >= 5 and (degree_choice != "3" or roll_count > 30000):
 			break
 		
@@ -92,8 +99,12 @@ def cg_accumulate(year, dep, degree_choice):
 	print ""
 	print "__________________________________"
 	print "Number of Students : " + str(student_count)
-	print "Total CG : " + str(cg_total)
-	print "Average CG : " + str(cg_total / student_count)
+	if sg_cg_choice == "1":
+		print "Total CG : " + str(cg_total)
+		print "Average CG : " + str(cg_total / student_count)
+	elif sg_cg_choice == "2":
+		print "Total SG : " + str(sg_total)
+		print "Average SG : " + str(sg_total / student_count)
 	print "__________________________________"
 
 
@@ -104,27 +115,35 @@ departments = ["AE", "AG", "AR", "BT", "CE", "CH", "CS", "CY", "EC", "EE", "EX",
 years = ["12","13","14","15"]
 
 while True:
+	print ""
 	year = raw_input("Enter year (Available Choices : 12, 13, 14, 15) :  ")
 	if year not in years:
 		print "Please enter a valid year choice"
 		continue
+	print ""
 	dep = raw_input("Enter Department :  ")
 	while dep not in departments:
 		print "Please enter a valid department!"
 		print "P.S. Department name should be capitalised. Eg. \"CS\" and not \"cs\""
 		dep = raw_input("Enter Valid Department again : ")
-
+	print ""
 	degree_choice = raw_input("Enter choice : '1' for 4 years only, '2' for 5 years only, '3' for both :  ")
 	while degree_choice not in ["1", "2", "3"]:
 		print "Please enter a valid choice!"
 		degree_choice = raw_input("Enter valid choice again : ")
+	print ""
+	sg_cg_choice = raw_input("Do you want CG list (enter '1') or most recent SG list (enter '2')? :  ")
+	while sg_cg_choice not in ["1","2"]:
+		print "Please enter a valid choice!"
+		sg_cg_choice = raw_input("Enter valid choice again : ")
 	break
+
 
 print ""
 print "Please wait while results are being accumulated, this may take a few minutes...."
 print "Meanwhile, minimize this screen and think about what you are doing with your life."
 print ""
-var = cg_accumulate(year, dep, degree_choice)
+var = cg_accumulate(year, dep, degree_choice,sg_cg_choice)
 key = raw_input("Press Enter to exit")
 
 
