@@ -4,6 +4,9 @@ import time
 
 
 def is_number(s):
+    """
+    Check and parse entered value as a number
+    """
     try:
         float(s)
         return True
@@ -11,11 +14,20 @@ def is_number(s):
         return False
 
 def cg_accumulate(year, dep, degree_choice):
+	
+	# List of departments with Integrated M.Sc. (5 year courses)
+	msc_dep_list = ["GG", "EX", "MA", "CY", "HS", "PH"]
+	msc_dep = False
+	
 	print ""
 	fname = "Output.txt"
 	roll_count = 10000
 	if degree_choice == "2":
 		roll_count = 30000
+	if dep in msc_dep_list:
+		roll_count = 20000
+		msc_dep = True
+		
 	student_count = 0
 	flag = False
 	cg_total = 0.00
@@ -35,7 +47,6 @@ def cg_accumulate(year, dep, degree_choice):
 			print "Retrying...."
 			student_count -= 1
 			roll_count -= 1
-			continue
 		soup = BeautifulSoup(r.text, "html.parser") 
 
 		with open(fname, "w") as text_file:
@@ -69,7 +80,9 @@ def cg_accumulate(year, dep, degree_choice):
 					break
 		if flag and bad_count >= 5 and (degree_choice != "3" or roll_count > 30000):
 			break
-		if flag and bad_count >= 5:
+		
+		# Will not be executed for MSc Integrated Courses
+		if flag and bad_count >= 5 and not msc_dep:
 			roll_count = 30000 
 			print "Making transition to dual degree students..."
 			continue
