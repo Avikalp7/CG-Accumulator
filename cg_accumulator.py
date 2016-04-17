@@ -89,7 +89,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice):
 				if line.find("SGPA") != -1 and is_number(line[25:29]):
 					sg_list.append(str(line[25:29]))
 		
-		if sg_cg_choice == "3":
+		if sg_cg_choice == "3" and not flag:
 			print "Roll Num : " + str(rollno) + "	SGPA list : " + str(sg_list) + "	Name : " + str(name)
 			del sg_list[:]
 
