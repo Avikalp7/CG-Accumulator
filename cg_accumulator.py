@@ -144,6 +144,7 @@ def find_cg(roll_num):
 
 		if len(content) < 40:
 			print "Invalid Roll Number!"
+			return -1
 		else:
 			for line in content:
 				if line.find("CGPA") != -1:
@@ -181,9 +182,10 @@ while True:
 		sg_cg_choice = raw_input("Enter valid choice again : ")
 
 	if sg_cg_choice == "4":
-		roll_num = raw_input("Enter last 5 digits of your roLl number :  ")
-		while len(roll_num) != 5:
+		roll_num = raw_input("Enter last 5 digits of your roll number :  ")
+		while len(roll_num) != 5 and (user_cg = find_cg(year + dep + roll_num) != -1):
 			print "Please enter valid last 5 digits"
+			roll_num = raw_input("Enter valid last 5 digits of your roll number again:  ")
 		user_cg = find_cg(year + dep + roll_num)
 		degree_choice = "3"
 	else:
