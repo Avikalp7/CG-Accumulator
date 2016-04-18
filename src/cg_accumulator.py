@@ -17,6 +17,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 	
 	# List of departments with Integrated M.Sc. (5 year courses)
 	msc_dep_list = ["GG", "EX", "MA", "CY", "HS", "PH"]
+	grades = ["E", "A", "B", "C", "D", "P", "F", "X"]
 	msc_dep = False
 	dep_rank = 1
 	num_grades = [0, 0, 0, 0, 0, 0, 0]
@@ -67,30 +68,39 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 				flag = True
 				bad_count += 1
 				student_count -= 1
+			# elif len(content) < line_num or content.find("Backlog") != -1 or content.find("Deregistered") != -1:
+			# 	student_count -= 1
+			# 	if content.find("Backlog") != -1 or content.find("Deregistered") != -1:
+			# 		print "Backlog / Deregistration. Skipping"
 			else:
 				bad_count = 0
 				name_line = content[19]
 				grade_line = content[line_num]
 				grade = grade_line[19:20]
+				if grade == "E":
+					grade = "EX"
 				idx = 24
 				while(name_line[idx]!='<'):
 					idx += 1
 				name = name_line[24:idx]
-				print "Grade :	" + str(grade) + "	Name : " + str(name)
-				if grade == "E":
-					num_grades[0] += 1
-				elif grade == "A":
-					num_grades[1] += 1
-				elif grade == "B":
-					num_grades[2] += 1
-				elif grade == "C":
-					num_grades[3] += 1
-				elif grade == "D":
-					num_grades[4] += 1
-				elif grade == "P":
-					num_grades[5] += 1
-				elif grade == "F":
-					num_grades[6] += 1
+				if grade in grades:
+					print "Grade :	" + str(grade) + "	Name : " + str(name)
+					if grade == "EX":
+						num_grades[0] += 1
+					elif grade == "A":
+						num_grades[1] += 1
+					elif grade == "B":
+						num_grades[2] += 1
+					elif grade == "C":
+						num_grades[3] += 1
+					elif grade == "D":
+						num_grades[4] += 1
+					elif grade == "P":
+						num_grades[5] += 1
+					elif grade == "F":
+						num_grades[6] += 1
+				else:
+					student_count -= 1
 
 
 		else:	
