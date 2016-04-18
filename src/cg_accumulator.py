@@ -13,13 +13,13 @@ def is_number(s):
     except ValueError:
         return False
 
-def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg):
+def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0):
 	
 	# List of departments with Integrated M.Sc. (5 year courses)
 	msc_dep_list = ["GG", "EX", "MA", "CY", "HS", "PH"]
 	msc_dep = False
 	dep_rank = 1
-	
+	num_grades = [0, 0, 0, 0, 0, 0, 0]
 	print ""
 	fname = "Output.txt"
 	roll_count = 10000
@@ -60,40 +60,75 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg):
 		with open(fname) as f:
 			content = f.readlines()
 
-		for line in content:
+		if sg_cg_choice == "5":
+			# if student_count > 6:
+			# 	break
 			if len(content) < 40:
 				flag = True
 				bad_count += 1
 				student_count -= 1
-				break
-			
-			bad_count = 0
-
-			if line.find("Name") != -1 and not name_flag:
+			else:
+				bad_count = 0
+				name_line = content[19]
+				grade_line = content[line_num]
+				grade = grade_line[19:20]
 				idx = 24
-				while(line[idx]!='<'):
+				while(name_line[idx]!='<'):
 					idx += 1
-				name = line[24:idx]
-				name_flag = True
+				name = name_line[24:idx]
+				print "Grade :	" + str(grade) + "	Name : " + str(name)
+				if grade == "E":
+					num_grades[0] += 1
+				elif grade == "A":
+					num_grades[1] += 1
+				elif grade == "B":
+					num_grades[2] += 1
+				elif grade == "C":
+					num_grades[3] += 1
+				elif grade == "D":
+					num_grades[4] += 1
+				elif grade == "P":
+					num_grades[5] += 1
+				elif grade == "F":
+					num_grades[6] += 1
 
-			if sg_cg_choice == "1" or sg_cg_choice == "4":
-				if line.find("CGPA") != -1:
-					if line[4] != "<" and is_number(line[31:35]):
-						if sg_cg_choice == "4":
-							if user_cg < float(line[31:35]):
-								dep_rank += 1
-						else:
-							print "Roll Num : " + str(rollno) + "	CG : " + str(line[31:35]) + "	Name : " + str(name)
-							cg_total += float(line[31:35])
-						break
-			elif sg_cg_choice == "2":
-				if line.find("SGPA") != -1 and is_number(line[25:29]):
-					print "Roll Num : " + str(rollno) + "	SGPA in most recent semester : " + str(line[25:29]) + "	Name : " + str(name)
-					sg_total += float(line[25:29])
+
+		else:	
+			for line in content:
+				if len(content) < 40:
+					flag = True
+					bad_count += 1
+					student_count -= 1
 					break
-			elif sg_cg_choice == "3":
-				if line.find("SGPA") != -1 and is_number(line[25:29]):
-					sg_list.append(str(line[25:29]))
+				
+				bad_count = 0
+
+				if line.find("Name") != -1 and not name_flag:
+					idx = 24
+					while(line[idx]!='<'):
+						idx += 1
+					name = line[24:idx]
+					name_flag = True
+
+				if sg_cg_choice == "1" or sg_cg_choice == "4":
+					if line.find("CGPA") != -1:
+						if line[4] != "<" and is_number(line[31:35]):
+							if sg_cg_choice == "4":
+								if user_cg < float(line[31:35]):
+									dep_rank += 1
+							else:
+								print "Roll Num : " + str(rollno) + "	CG : " + str(line[31:35]) + "	Name : " + str(name)
+								cg_total += float(line[31:35])
+							break
+				elif sg_cg_choice == "2":
+					if line.find("SGPA") != -1 and is_number(line[25:29]):
+						print "Roll Num : " + str(rollno) + "	SGPA in most recent semester : " + str(line[25:29]) + "	Name : " + str(name)
+						sg_total += float(line[25:29])
+						break
+				elif sg_cg_choice == "3":
+					if line.find("SGPA") != -1 and is_number(line[25:29]):
+						sg_list.append(str(line[25:29]))
+
 		
 		if sg_cg_choice == "3" and not flag:
 			print "Roll Num : " + str(rollno) + "	SGPA list : " + str(sg_list) + "	Name : " + str(name)
@@ -111,7 +146,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg):
 
 	student_count -= 1
 	print ""
-	print "__________________________________"
+	print "________________________________________"
 	print "Number of Students : " + str(student_count)
 	if sg_cg_choice == "1":
 		print "Total CG : " + str(cg_total)
@@ -125,7 +160,10 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg):
 			print "Good going. You are in the top half of your department"
 		else:
 			print "A bit more hard work can see you in the top half of your department"
-	print "__________________________________"
+	elif sg_cg_choice == "5":
+		print "Grade List : "
+		print num_grades
+	print "________________________________________"
 
 
 def find_cg(roll_num):
@@ -156,7 +194,7 @@ def find_cg(roll_num):
 		exit(0)
 
 
-def find_subject_grade(year, dep, sub_name, msc_dep_bool):
+def find_subject_grade_line(year, dep, sub_name, msc_dep_bool):
 	"""
 	Finds grade distribution in a particular subject obtained by previous batches
 	"""
@@ -171,6 +209,7 @@ def find_subject_grade(year, dep, sub_name, msc_dep_bool):
 
 	subj_found_flag = False
 	grade_found_flag = False
+
 	while True:
 		rollno = str(year) + str(dep) + str(roll_count)
 		url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + rollno
@@ -185,19 +224,21 @@ def find_subject_grade(year, dep, sub_name, msc_dep_bool):
 			with open(fname) as f:
 				content = f.readlines()
 
+
 			if len(content) < 40:
 				roll_count += 1
 				continue
 			else:
 				index = 0
 				grade_line_index = 0
-				for lines in content:
-					if line.find(sub_name):
+				for line in content:
+					if line.find(sub_name) != -1:
 						subj_found_flag = True
-						grade_line = content[index + 3]
-						grade = grade_line[19]
-						if grade not in grades or grade not = "E":
+						grade_line = content[index+3]
+						grade = grade_line[19:20]
+						if grade not in grades and grade != "E":
 							print "This Subject is an ongoing subject for the mentioned batch number"
+							print grade
 							print "System will now exit"
 							#exit(0)
 							# this can be replaced by return
@@ -207,15 +248,16 @@ def find_subject_grade(year, dep, sub_name, msc_dep_bool):
 							grade_line_index = index + 3
 						break
 					index += 1
-				if not grade_found_flag or not subj_found_flag:
+				if not grade_found_flag or (subj_found_flag == False):
 					print "Subject not found! System will now exit"
 					#exit(0)
 					return -1
 					# this can be replaced by return
 				else:
-					return subj_line_index
-
-				
+					return grade_line_index	
+		except Exception:
+			print "ConnectionError. Retrying..."
+			continue
 
 
 
@@ -239,18 +281,24 @@ while True:
 		print "P.S. Department name should be capitalised. Eg. \"CS\" and not \"cs\""
 		dep = raw_input("Enter Valid Department again : ")
 	print ""
-	sg_cg_choice = raw_input("Do you want CG list (enter '1') \n or Most recent SG list (enter '2') \n or Entire SG history (enter '3') \n or Know your D.R. (enter '4')? :  ")
-	while sg_cg_choice not in ["1", "2", "3", "4"]:
+	sg_cg_choice = raw_input("Do you want CG list (enter '1') \n or Most recent SG list (enter '2') \n or Entire SG history (enter '3') \n or Know your D.R. (enter '4') \n or Find previous year grades in a particular subject (enter '5')? :  ")
+	while sg_cg_choice not in ["1", "2", "3", "4", "5"]:
 		print "Please enter a valid choice!"
 		sg_cg_choice = raw_input("Enter valid choice again : ")
 
-	if sg_cg_choice == "4":
-		roll_num = raw_input("Enter last 5 digits of your roll number :  ")
-		while len(roll_num) != 5 or find_cg(year + dep + roll_num) == -1:
-			print "Please enter valid last 5 digits"
-			roll_num = raw_input("Enter valid last 5 digits of your roll number again:  ")
-		user_cg = find_cg(year + dep + roll_num)
+	if sg_cg_choice == "4" or sg_cg_choice == "5":
 		degree_choice = "3"
+		if sg_cg_choice == "4":
+			roll_num = raw_input("Enter last 5 digits of your roll number :  ")
+			while len(roll_num) != 5 or find_cg(year + dep + roll_num) == -1:
+				print "Please enter valid last 5 digits"
+				roll_num = raw_input("Enter valid last 5 digits of your roll number again:  ")
+			user_cg = find_cg(year + dep + roll_num)
+		elif sg_cg_choice == "5":
+			sub_name = raw_input("Enter subject name in capital letters :  ")
+			line_num = find_subject_grade_line(year, dep, sub_name, False)
+			print line_num
+
 	else:
 		print ""
 		degree_choice = raw_input("Enter choice : '1' for 4 years only, '2' for 5 years only, '3' for both :  ")
@@ -260,13 +308,24 @@ while True:
 		print ""
 	break
 
+# year = "14"
+# dep = "CS"
+# sg_cg_choice = "5"
+# sub_name = "CHEMISTRY"
+# line_num = find_subject_grade_line(year, dep, sub_name, False)
+# print line_num
 
-print ""
-print "Please wait while results are being accumulated, this may take a few minutes...."
-print "Meanwhile, minimize this screen and think about what you are doing with your life."
-print ""
-var = cg_accumulate(year, dep, degree_choice,sg_cg_choice, user_cg)
-print ""
+if sg_cg_choice != "5":
+	print ""
+	print "Please wait while results are being accumulated, this may take a few minutes...."
+	print "Meanwhile, minimize this screen and think about what you are doing with your life."
+	print ""
+	var = cg_accumulate(year, dep, degree_choice,sg_cg_choice, user_cg)
+	print ""
+elif sg_cg_choice == "5":
+	line_num = find_subject_grade_line(year, dep, sub_name, False)
+	var = cg_accumulate(year, dep, degree_choice, sg_cg_choice, 0.00, line_num)
+
 key = raw_input("Press Enter to exit")
 
 
