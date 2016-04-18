@@ -308,7 +308,7 @@ while True:
 			user_cg = find_cg(year + dep + roll_num)
 		elif sg_cg_choice == "5":
 			sub_name = raw_input("Enter subject name in capital letters :  ")
-			line_num = find_subject_grade_line(year, dep, sub_name, False)
+			line_num = find_subject_grade_line(year, dep, sub_name, False)				
 
 	else:
 		print ""
@@ -335,7 +335,8 @@ if sg_cg_choice != "5":
 	print ""
 elif sg_cg_choice == "5":
 	line_num = find_subject_grade_line(year, dep, sub_name, False)
-	var = cg_accumulate(year, dep, degree_choice, sg_cg_choice, 0.00, line_num)
+	if line_num != -1:
+		var = cg_accumulate(year, dep, degree_choice, sg_cg_choice, 0.00, line_num)
 
 key = raw_input("Press Enter to exit")
 
