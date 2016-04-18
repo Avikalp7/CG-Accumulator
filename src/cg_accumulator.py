@@ -68,7 +68,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 				flag = True
 				bad_count += 1
 				student_count -= 1
-			elif len(content < line_num):
+			elif len(content) < line_num:
 				student_count -= 1
 			# elif len(content) < line_num or content.find("Backlog") != -1 or content.find("Deregistered") != -1:
 			# 	student_count -= 1
