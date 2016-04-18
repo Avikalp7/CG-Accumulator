@@ -17,7 +17,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 	
 	# List of departments with Integrated M.Sc. (5 year courses)
 	msc_dep_list = ["GG", "EX", "MA", "CY", "HS", "PH"]
-	grades = ["E", "A", "B", "C", "D", "P", "F", "X"]
+	grades = ["EX", "A", "B", "C", "D", "P", "F", "X"]
 	msc_dep = False
 	dep_rank = 1
 	num_grades = [0, 0, 0, 0, 0, 0, 0]
