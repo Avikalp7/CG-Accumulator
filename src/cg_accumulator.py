@@ -186,23 +186,34 @@ def find_subject_grade(year, dep, sub_name, msc_dep_bool):
 				content = f.readlines()
 
 			if len(content) < 40:
+				roll_count += 1
 				continue
 			else:
 				index = 0
-				sub_found_index = 0
+				grade_line_index = 0
 				for lines in content:
 					if line.find(sub_name):
 						subj_found_flag = True
 						grade_line = content[index + 3]
 						grade = grade_line[19]
 						if grade not in grades or grade not = "E":
-							print "This Subject is an ongoing subject for the mentioned batchn"
+							print "This Subject is an ongoing subject for the mentioned batch number"
+							print "System will now exit"
+							#exit(0)
+							# this can be replaced by return
+							return -1
 						else:
 							grade_found_flag = True
+							grade_line_index = index + 3
 						break
-
 					index += 1
-
+				if not grade_found_flag or not subj_found_flag:
+					print "Subject not found! System will now exit"
+					#exit(0)
+					return -1
+					# this can be replaced by return
+				else:
+					return subj_line_index
 
 				
 
