@@ -32,7 +32,7 @@ Download zip and extract
 
 * Find most intimidating subject for next semester.
 
-* KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to mud-slinging over false data.
+* KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data.
 
 * Find number of Ex's, A's, B's etc. you have scored over your entire journey.
 
