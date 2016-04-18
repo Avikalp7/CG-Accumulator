@@ -307,7 +307,6 @@ while True:
 		elif sg_cg_choice == "5":
 			sub_name = raw_input("Enter subject name in capital letters :  ")
 			line_num = find_subject_grade_line(year, dep, sub_name, False)
-			print line_num
 
 	else:
 		print ""
