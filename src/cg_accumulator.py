@@ -156,6 +156,58 @@ def find_cg(roll_num):
 		exit(0)
 
 
+def find_subject_grade(year, dep, sub_name, msc_dep_bool):
+	"""
+	Finds grade distribution in a particular subject obtained by previous batches
+	"""
+	fname = "Output.txt"
+	grades = ["EX", "A", "B", "C", "D", "P", "F", "X"]
+
+	if msc_dep_bool:
+		roll_count = 20001
+	else:
+		roll_count = 10001
+
+
+	subj_found_flag = False
+	grade_found_flag = False
+	while True:
+		rollno = str(year) + str(dep) + str(roll_count)
+		url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + rollno
+		try:
+			r = requests.get(url_to_scrape) 
+
+			soup = BeautifulSoup(r.text, "html.parser") 
+
+			with open(fname, "w") as text_file:
+				text_file.write("{}".format(soup))
+
+			with open(fname) as f:
+				content = f.readlines()
+
+			if len(content) < 40:
+				continue
+			else:
+				index = 0
+				sub_found_index = 0
+				for lines in content:
+					if line.find(sub_name):
+						subj_found_flag = True
+						grade_line = content[index + 3]
+						grade = grade_line[19]
+						if grade not in grades or grade not = "E":
+							print "This Subject is an ongoing subject for the mentioned batchn"
+						else:
+							grade_found_flag = True
+						break
+
+					index += 1
+
+
+				
+
+
+
 
 print "*** Welcome to CG Accumulator ***"
 
