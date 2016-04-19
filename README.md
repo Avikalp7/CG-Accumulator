@@ -16,11 +16,11 @@ Download zip and extract
 
 * Generate full SGPA history for entire batch.
 
+* Find distribution of grades in subjects in past years.
+
 * Find your department rank.
 
 ### Upcoming Features
-    
-* Find distribution of grades in subjects in past years.
 
 * View trends in SGPA among different year batches of your department.
 
