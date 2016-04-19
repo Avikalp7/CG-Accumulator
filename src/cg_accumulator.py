@@ -187,7 +187,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 	elif sg_cg_choice == "5":
 		print "Grade List : "
 		print "EX : " + str(num_grades[0]) + "	A : " + str(num_grades[1]) + "	B : " + str(num_grades[2]) + "	C : " + str(num_grades[3]) 	  
-		print "D : " + str(num_grades[4]) + "	P : " + str(num_grades[5]) + "	F : " + str(num_grades[6]) + "	Dereg : " + str(num_grades[7])
+		print "	D : " + str(num_grades[4]) + "	P : " + str(num_grades[5]) + "	F : " + str(num_grades[6]) + "	Dereg : " + str(num_grades[7])
 		if float(sum(num_grades[0:2])) / sum(num_grades) > 0.45:
 			print "Looks like a scoring subject to me."
 		elif float(sum(num_grades[0:2])) / sum(num_grades) < 0.30:
@@ -255,7 +255,6 @@ def find_subject_grade_line(year, dep, sub_name, msc_dep_bool):
 			with open(fname) as f:
 				content = f.readlines()
 
-
 			if len(content) < 40:
 				roll_count += 1
 				continue
@@ -299,9 +298,37 @@ def find_subject_grade_line(year, dep, sub_name, msc_dep_bool):
 			continue
 
 
+def check_results_availability():
+
+	fname = "Output.txt"
+	url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=14CS10008'
+	try:
+		r = requests.get(url_to_scrape) 
+
+		soup = BeautifulSoup(r.text, "html.parser") 
+
+		with open(fname, "w") as text_file:
+			text_file.write("{}".format(soup))
+
+		with open(fname) as f:
+			content = f.readlines()
+
+		for line in content:
+			if line.find("Students Performance will be enabled after SENATE Approval") != -1:
+				return False
+		return True
+	except Exception:
+		print "ConnectionError. Trying again..."
+		return check_results_availability()
 
 
 print "*** Welcome to CG Accumulator ***"
+print "Establishing Connection ........"
+
+if not check_results_availability():
+	print "Sorry. Right now the results are not available due to ongoing upadations in institute database."
+	key = raw_input("Press Enter to Exit.")
+	exit(0)
 
 departments = ["AE", "AG", "AR", "BT", "CE", "CH", "CS", "CY", "EC", "EE", "EX", "GG", "HS", "IE", "IM", "MA", "ME", "MF", "MI", "MT", "NA", "PH", "QD"]
 years = ["12","13","14","15"]
@@ -371,7 +398,6 @@ elif sg_cg_choice == "5":
 		var = cg_accumulate(year, dep, degree_choice, sg_cg_choice, 0.00, line_num)
 
 key = raw_input("Press Enter to exit")
-
 
 
 
