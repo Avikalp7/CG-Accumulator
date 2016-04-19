@@ -20,7 +20,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 	grades = ["EX", "A", "B", "C", "D", "P", "F", "X"]
 	msc_dep = False
 	dep_rank = 1
-	num_grades = [0, 0, 0, 0, 0, 0, 0]
+	num_grades = [0, 0, 0, 0, 0, 0, 0, 0]
 	print ""
 	fname = "Output.txt"
 	roll_count = 10000
@@ -82,7 +82,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 					idx += 1
 				name = name_line[24:idx]
 				
-				if content[line_num - 3].find(sub_name) != -1:
+				if content[line_num - 3].find(sub_name) != -1:	# VULNERABILITY
 					grade_line = content[line_num]
 					grade = grade_line[19:20]
 				else:
