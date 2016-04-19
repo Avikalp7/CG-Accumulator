@@ -187,7 +187,7 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 	elif sg_cg_choice == "5":
 		print "Grade List : "
 		print "EX : " + str(num_grades[0]) + "	A : " + str(num_grades[1]) + "	B : " + str(num_grades[2]) + "	C : " + str(num_grades[3]) 	  
-		print "	D : " + str(num_grades[4]) + "	P : " + str(num_grades[5]) + "	F : " + str(num_grades[6]) + "	Dereg : " + str(num_grades[7])
+		print "D : " + str(num_grades[4]) + "	P : " + str(num_grades[5]) + "	F : " + str(num_grades[6]) + "	Dereg : " + str(num_grades[7])
 		if float(sum(num_grades[0:2])) / sum(num_grades) > 0.45:
 			print "Looks like a scoring subject to me."
 		elif float(sum(num_grades[0:2])) / sum(num_grades) < 0.30:
