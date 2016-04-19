@@ -77,14 +77,24 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 			else:
 				bad_count = 0
 				name_line = content[19]
-				grade_line = content[line_num]
-				grade = grade_line[19:20]
-				if grade == "E":
-					grade = "EX"
-				idx = 24
+				idx = 24				
 				while(name_line[idx]!='<'):
 					idx += 1
 				name = name_line[24:idx]
+				
+				if content[line_num - 3].find(sub_name) != -1:
+					grade_line = content[line_num]
+					grade = grade_line[19:20]
+				else:
+					index = 0
+					for line in content:
+						if line.find(sub_name) != -1:
+							grade_line = content[index + 3]
+							grade = grade_line[19:20]
+							break
+						index += 1
+				if grade == "E":
+					grade = "EX"
 				if grade in grades:
 					print "Grade :	" + str(grade) + "	Name : " + str(name)
 					if grade == "EX":
@@ -101,6 +111,8 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 						num_grades[5] += 1
 					elif grade == "F":
 						num_grades[6] += 1
+					elif grade == "X":
+						num_grades[7] += 1
 				else:
 					student_count -= 1
 
@@ -174,7 +186,14 @@ def cg_accumulate(year, dep, degree_choice, sg_cg_choice, user_cg, line_num = 0)
 			print "A bit more hard work can see you in the top half of your department"
 	elif sg_cg_choice == "5":
 		print "Grade List : "
-		print num_grades
+		print "EX : " + str(num_grades[0]) + "	A : " + str(num_grades[1]) + "	B : " + str(num_grades[2]) + "	C : " + str(num_grades[3]) 	  
+		print "	D : " + str(num_grades[4]) + "	P : " + str(num_grades[5]) + "	F : " + str(num_grades[6]) + "	Dereg : " + str(num_grades[7])
+		if float(sum(num_grades[0:2])) / sum(num_grades) > 0.45:
+			print "Looks like a scoring subject to me."
+		elif float(sum(num_grades[0:2])) / sum(num_grades) < 0.30:
+			print "Looks like a gloomy subject to me."
+		if num_grades[7] >= 5:
+			print "Beware! Too much threat of Deregistration in this one!" 
 	print "________________________________________"
 
 
@@ -240,6 +259,14 @@ def find_subject_grade_line(year, dep, sub_name, msc_dep_bool):
 			if len(content) < 40:
 				roll_count += 1
 				continue
+
+			bad_flag = False
+			for line in content:
+				if line.find("Backlog") != -1 or line.find("Deregistered") != -1:
+					bad_flag  = True
+					break
+			if bad_flag:
+				roll_count += 1
 			else:
 				index = 0
 				grade_line_index = 0
