@@ -1,5 +1,5 @@
 # CG-Accumulator
-Accumulates CG of students in IIT Kharagpur
+Accumulates CG of students in IIT Kharagpur through web scraping in python using BeautifulSoup.
 
 ## Installation
 Download zip and extract
