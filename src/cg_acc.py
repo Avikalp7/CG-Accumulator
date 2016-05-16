@@ -557,18 +557,7 @@ def is_msc_dep(dep):
 
 if __name__ == "__main__":
 	print "***** Welcome to CG Accumulator *****"
-	print "Establishing Connection ........"
-	# connecting to a default performance page.
-	# INCLUDE
-	'''
-	content = connect("Output.txt", "https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=14CS10008")
-	# Checking availability of results.
-	if not check_results_availability():
-		print "Sorry. Right now the results are not available due to ongoing upadations in institute database."
-		key = raw_input("Press Enter to Exit.")
-		exit(0)
-	'''
-	# END INCLUDE
+
 
 	'''
 	# List storing available departments in IIT Kharagpur.
@@ -594,6 +583,18 @@ if __name__ == "__main__":
 		table.add_row(['','', '3.4 Subject with most F and Deregistrations', ''])
 		table.align = 'l'
 		print table
+		print "Establishing Connection ........"
+		# connecting to a default performance page.
+		# INCLUDE
+		
+		content = connect("Output.txt", "https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=14CS10008")
+		# Checking availability of results.
+		if not check_results_availability():
+			print "Sorry. Right now the results are not available due to ongoing upadations in institute database."
+			key = raw_input("Press Enter to Exit.")
+			exit(0)
+		
+	# END INCLUDE
 		main_menu_status = take_main_choice()
 		break
 
