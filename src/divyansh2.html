@@ -1,0 +1,678 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="css/style1.css" rel="StyleSheet">
+<title>View Student Performance</title>
+</link></meta></head>
+<body>
+<fieldset>
+<legend></legend><br>
+<table width="100%">
+<tr>
+<td align="center" colspan="4"><h2><u>Performance Summary</u></h2></td>
+</tr>
+<tr>
+<td><b>Roll No.</b></td><td>13CS30011</td>
+<td><b>Name</b></td><td>DIVYANSH GUPTA</td>
+</tr>
+<tr><td><b>Department</b></td><td>COMPUTER SCIENCE &amp; ENGINEERING</td></tr>
+<tr> <td><b>Course name</b></td><td>COMPUTER SCIENCE &amp; ENGG. (M.Tech Dual 5Y)</td>
+<td><b>Minor (if any)</b></td><td></td>
+</tr>
+</table>
+</br></fieldset>
+<table border="1" width="100%">
+<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: 6</h3></td></tr>
+<tr>
+<td width="60%"> <table>
+<tr>
+<th width="15%">Subject No</th>
+<th width="25%">Subject Name</th>
+<th width="20%">L-T-P</th>
+<th width="10%">Credit</th>
+<th width="15%">Grade</th>
+<th width="15%">Subject Type</th>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>BS20001</td>
+<td>SCIENCE OF LIVING SYSTEM</td>
+<td>2-0-0     </td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS30002</td>
+<td>OPERATING SYSTEMS</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS31006</td>
+<td>COMPUTER NETWORKS</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS39002</td>
+<td>OPERATING SYSTEMS LABORATORY</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS39006</td>
+<td>NETWORKS LAB.</td>
+<td>0-0-3</td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS39008</td>
+<td>PROJECT SEMINAR</td>
+<td>0-0-3</td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS43002</td>
+<td>DATABASE MANAGEMENT SYSTEMS</td>
+<td>3-0-3 </td>
+<td align="center">5</td>
+<td align="center"></td>
+<td align="center">Elective-III</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS60092</td>
+<td>INFORMATION RETRIEVAL</td>
+<td>3-0-0</td>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center">Elective-II</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EV20001</td>
+<td>ENVIRONMENTAL SCIENCE</td>
+<td>2-0-0     </td>
+<td align="center">2</td>
+<td align="center"></td>
+<td align="center">Depth</td>
+</tr>
+</table>
+</td>
+<td width="40%">
+<table>
+<tr bgcolor="#FFF3FF">
+<td><b>Semester Credit Taken</b></td><td></td>
+<td>   <b>Semester Credit Cleared</b></td><td></td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Credit Taken</b></td><td></td>
+<td><b>  &amp;nbspTotal; Credit Cleared</b></td><td></td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td> <b>SGPA</b></td><td></td>
+<td>   <b> CGPA</b></td><td></td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional Credit Taken</b></td><td></td>
+<td><b>  &amp;nbspAdditional; Credit Cleared</b></td><td></td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional SGPA</b></td><td></td>
+<td><b>  &amp;nbspAdditional; CGPA</b></td><td></td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Additional Credit Taken</b></td><td></td>
+<td><b>  &amp;nbspTotal; Additional Credit     Cleared</b></td><td></td>
+</tr>
+</table></td></tr>
+<table border="1" width="100%">
+<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: 5</h3></td></tr>
+<tr>
+<td width="60%"> <table>
+<tr>
+<th width="15%">Subject No</th>
+<th width="25%">Subject Name</th>
+<th width="20%">L-T-P</th>
+<th width="10%">Credit</th>
+<th width="15%">Grade</th>
+<th width="15%">Subject Type</th>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS31003</td>
+<td>COMPILERS</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS31005</td>
+<td>ALGORITHMS -II</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="pink">
+<td>CS31007</td>
+<td>COMPUTER ORGANIZATION &amp; ARCHITECTURE</td>
+<td>3-1-0</td>
+<td align="center">4</td>
+<td align="center">X<br><b style="color:'red'">(Deregistered)</b></br></td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS39001</td>
+<td>COMPUTER ORGANIZATION LABORATORY</td>
+<td>0-0-6 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS39003</td>
+<td>COMPILERS LABORATORY</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>IT30037</td>
+<td>INTRODUCTION TO INTERNET</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center">B</td>
+<td align="center">Breadth-II</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>MA20107</td>
+<td>MATRIX ALGEBRA</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center">C</td>
+<td align="center">Elective-I(MATH)</td>
+</tr>
+</table>
+</td>
+<td width="40%">
+<table>
+<tr bgcolor="#FFF3FF">
+<td><b>Semester Credit Taken</b></td><td>23</td>
+<td>   <b>Semester Credit Cleared</b></td><td>19</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Credit Taken</b></td><td>115</td>
+<td><b>  &amp;nbspTotal; Credit Cleared</b></td><td>111</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td> <b>SGPA</b></td><td>8.21</td>
+<td>   <b> CGPA</b></td><td>8.85</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspAdditional; Credit Cleared</b></td><td>0</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional SGPA</b></td><td>0.00</td>
+<td><b>  &amp;nbspAdditional; CGPA</b></td><td>8.00</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Additional Credit Taken</b></td><td>2</td>
+<td><b>  &amp;nbspTotal; Additional Credit     Cleared</b></td><td>2</td>
+</tr>
+</table></td></tr>
+<table border="1" width="100%">
+<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: 4</h3></td></tr>
+<tr>
+<td width="60%"> <table>
+<tr>
+<th width="15%">Subject No</th>
+<th width="25%">Subject Name</th>
+<th width="20%">L-T-P</th>
+<th width="10%">Credit</th>
+<th width="15%">Grade</th>
+<th width="15%">Subject Type</th>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>15IST01</td>
+<td>ENABLING INTERNET OF THINGS WITH CLOUD AND BIG-DATA NETWORKING </td>
+<td>2-0-0</td>
+<td align="center">2</td>
+<td align="center">B</td>
+<td align="center">Additional</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS20006</td>
+<td>SOFTWARE ENGINEERING</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS21002</td>
+<td>SWITCHING CIRCUITS AND LOGIC DESIGN</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS21004</td>
+<td>FORMAL LANGUAGE AND AUTOMATA THEORY</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">C</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS29002</td>
+<td>SWITCHING CIRCUITS LABORATORY</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS29006</td>
+<td>SOFTWARE ENGINEERING LABORATORY</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EA10004</td>
+<td>EXTRA ACADEMIC ACTIVITY-IV</td>
+<td>0-0-3 </td>
+<td align="center">0</td>
+<td align="center">X</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>HS20004</td>
+<td>POSITIVE PSYCHOLOGY</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">HSS(CORE)</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>MA20104</td>
+<td>PROBABILITY &amp; STATISTICS</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+</table>
+</td>
+<td width="40%">
+<table>
+<tr bgcolor="#FFF3FF">
+<td><b>Semester Credit Taken</b></td><td>22</td>
+<td>   <b>Semester Credit Cleared</b></td><td>22</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Credit Taken</b></td><td>92</td>
+<td><b>  &amp;nbspTotal; Credit Cleared</b></td><td>92</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td> <b>SGPA</b></td><td>9.23</td>
+<td>   <b> CGPA</b></td><td>8.98</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional Credit Taken</b></td><td>2</td>
+<td><b>  &amp;nbspAdditional; Credit Cleared</b></td><td>2</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional SGPA</b></td><td>8.00</td>
+<td><b>  &amp;nbspAdditional; CGPA</b></td><td>8.00</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Additional Credit Taken</b></td><td>2</td>
+<td><b>  &amp;nbspTotal; Additional Credit     Cleared</b></td><td>2</td>
+</tr>
+</table></td></tr>
+<table border="1" width="100%">
+<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: 3</h3></td></tr>
+<tr>
+<td width="60%"> <table>
+<tr>
+<th width="15%">Subject No</th>
+<th width="25%">Subject Name</th>
+<th width="20%">L-T-P</th>
+<th width="10%">Credit</th>
+<th width="15%">Grade</th>
+<th width="15%">Subject Type</th>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS21001</td>
+<td>DISCRETE STRUCTURES</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS21003</td>
+<td>ALGORITHMS - I</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS29003</td>
+<td>ALGORITHMS LABORATORY</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EA10003</td>
+<td>EXTRA ACADEMIC ACTIVITY-III</td>
+<td>0-0-3 </td>
+<td align="center">0</td>
+<td align="center">D</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EC21103</td>
+<td>INTRODUCTION TO ELECTRONICS</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EC29003</td>
+<td>INTRODUCTION TO ELECTRONICS LAB.</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EE21101</td>
+<td>SIGNALS &amp; NETWORKS</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">C</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EE29001</td>
+<td>SIGNALS &amp; NETWORKS LAB.</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>HS30048</td>
+<td>GERMAN</td>
+<td>3-0-0 </td>
+<td align="center">3</td>
+<td align="center">C</td>
+<td align="center">HSS</td>
+</tr>
+</table>
+</td>
+<td width="40%">
+<table>
+<tr bgcolor="#FFF3FF">
+<td><b>Semester Credit Taken</b></td><td>25</td>
+<td>   <b>Semester Credit Cleared</b></td><td>25</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Credit Taken</b></td><td>70</td>
+<td><b>  &amp;nbspTotal; Credit Cleared</b></td><td>70</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td> <b>SGPA</b></td><td>8.12</td>
+<td>   <b> CGPA</b></td><td>8.90</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspAdditional; Credit Cleared</b></td><td>0</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional SGPA</b></td><td>0.00</td>
+<td><b>  &amp;nbspAdditional; CGPA</b></td><td>0.00</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspTotal; Additional Credit     Cleared</b></td><td>0</td>
+</tr>
+</table></td></tr>
+<table border="1" width="100%">
+<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: 2</h3></td></tr>
+<tr>
+<td width="60%"> <table>
+<tr>
+<th width="15%">Subject No</th>
+<th width="25%">Subject Name</th>
+<th width="20%">L-T-P</th>
+<th width="10%">Credit</th>
+<th width="15%">Grade</th>
+<th width="15%">Subject Type</th>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CE13001</td>
+<td>ENGINEERING DRAWING AND COMPUTER GRAPHICS</td>
+<td>1-0-3 </td>
+<td align="center">3</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS11001</td>
+<td>PROGRAMMING AND DATA STRUCTURE</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CS19001</td>
+<td>PROGRAMMING AND DATA STRUCTURE LAB.</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EA10002</td>
+<td>EXTRA ACADEMIC ACTIVITY-II</td>
+<td>0-0-3 </td>
+<td align="center">0</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>MA10002</td>
+<td>MATHEMATICS-II</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>ME10001</td>
+<td>MECHANICS</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>PH11001</td>
+<td>PHYSICS</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>PH19001</td>
+<td>PHYSICS LAB.</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+</table>
+</td>
+<td width="40%">
+<table>
+<tr bgcolor="#FFF3FF">
+<td><b>Semester Credit Taken</b></td><td>23</td>
+<td>   <b>Semester Credit Cleared</b></td><td>23</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Credit Taken</b></td><td>45</td>
+<td><b>  &amp;nbspTotal; Credit Cleared</b></td><td>45</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td> <b>SGPA</b></td><td>9.65</td>
+<td>   <b> CGPA</b></td><td>9.33</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspAdditional; Credit Cleared</b></td><td>0</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional SGPA</b></td><td>0.00</td>
+<td><b>  &amp;nbspAdditional; CGPA</b></td><td>0.00</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspTotal; Additional Credit     Cleared</b></td><td>0</td>
+</tr>
+</table></td></tr>
+<table border="1" width="100%">
+<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: 1</h3></td></tr>
+<tr>
+<td width="60%"> <table>
+<tr>
+<th width="15%">Subject No</th>
+<th width="25%">Subject Name</th>
+<th width="20%">L-T-P</th>
+<th width="10%">Credit</th>
+<th width="15%">Grade</th>
+<th width="15%">Subject Type</th>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CY11001</td>
+<td>CHEMISTRY</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>CY19001</td>
+<td>CHEMISTRY LAB.</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">EX</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EA10001</td>
+<td>EXTRA ACADEMIC ACTIVITY-I</td>
+<td>0-0-3 </td>
+<td align="center">0</td>
+<td align="center">P  </td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EE11001</td>
+<td>ELECTRICAL TECHNOLOGY</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>EE19001</td>
+<td>ELECTRICAL TECHNOLOGY LAB.</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>HS13001</td>
+<td>ENGLISH FOR COMMUNICATION</td>
+<td>3-0-2 </td>
+<td align="center">4</td>
+<td align="center">B</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>MA10001</td>
+<td>MATHEMATICS-I</td>
+<td>3-1-0 </td>
+<td align="center">4</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td>ME19001</td>
+<td>INTRODUCTION TO MANUFACTURING PROCESSES</td>
+<td>0-0-3 </td>
+<td align="center">2</td>
+<td align="center">A</td>
+<td align="center">Depth</td>
+</tr>
+</table>
+</td>
+<td width="40%">
+<table>
+<tr bgcolor="#FFF3FF">
+<td><b>Semester Credit Taken</b></td><td>22</td>
+<td>   <b>Semester Credit Cleared</b></td><td>22</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Credit Taken</b></td><td>22</td>
+<td><b>  &amp;nbspTotal; Credit Cleared</b></td><td>22</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td> <b>SGPA</b></td><td>9.00</td>
+<td>   <b> CGPA</b></td><td>9.00</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspAdditional; Credit Cleared</b></td><td>0</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Additional SGPA</b></td><td>0.00</td>
+<td><b>  &amp;nbspAdditional; CGPA</b></td><td>0.00</td>
+</tr>
+<tr bgcolor="#FFF3FF">
+<td><b>Total Additional Credit Taken</b></td><td>0</td>
+<td><b>  &amp;nbspTotal; Additional Credit     Cleared</b></td><td>0</td>
+</tr>
+</table></td></tr>
+</table>
+</table></table></table></table></table></body>
+</html>
+
+
