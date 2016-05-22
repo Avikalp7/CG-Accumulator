@@ -38,7 +38,7 @@ import ctypes
 # Stores the version of the software
 # Used for Software Update, after matching latest version number available from http://cgaccumulator.blog.com/
 # TODO : Not implemented as of now
-version = '0.3'
+version = '0.4'
 
 
 def check_for_update(content):
