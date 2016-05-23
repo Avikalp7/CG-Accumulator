@@ -1,42 +1,42 @@
 # CG-Accumulator
-Accumulates CG of students in IIT Kharagpur through web scraping in python using BeautifulSoup.
+A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
+ 
+### Important Features:
+1. ######SEMESTER SUMMARISER
+
+    Summarises the important aspects of a particular semester for a department 
+    based on previous year grades. The important aspects include:
+    - Know the average SGPA for the semester (based on previous year) to get a fair idea about the semester's difficulty level.
+    - Generating the grade distribution data for all the depth subjects in the previous year
+    - Generate list of all the breadth and elective courses that were actually taken up by previous year students.
+    - Generate the grade distribution for these breadth and electives based on students of a particular department only.
+    - Sort the depth subjects in decreasing order of 'difficulty' based on a normalised score calculated from the grade distribution.
+    - Find the subject that recorded most deregistrations, helping students know in advance about courses that are strict with attendance.
+    - Find the most scoring subject - based on number of A's + Ex's, or find the subject with most F's involved. 
+ 
+2. ######DEPARTMENT RANKS
+    - An important evaluation whenever a semester ends as the option to find the department rank 
+      on the basis of SGPA achieved in most recent results is available.
+    - CGPA based evaluation is also available.
+    - Generating a department rank list for the entire batch on above parameters.
+ 
+3. ######RECENT SGPA LISTS 
+    - Helps to generate the SGPA list for the entire batch based on the most recent results.
+ 
+4. ######OTHER FEATURES
+    - Generate CGPA list for an entire batch.
+    - Generate entire SGPA history for a batch / individual. Data from seniors helpful in identifying SGPA pitfalls.
+    - Get individual performance for only a particular semester
+    - Get performance link to a roll number without the birth date parameter.
+    - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
+
 
 ## Installation
-Download zip and extract
 
+#####Windows
+
+#####Ubuntu
     $ sudo apt-get python.requests
     $ pip install bs4
     $ python cg_accumulator.py
-
-### Features
-    
-* Generate CGPA list for an entire batch. (Eg. 14CS batch)
-
-* Generate SGPA list for the most recent semester for an entire batch.
-
-* Generate full SGPA history for entire batch.
-
-* Find distribution of grades in subjects in past years.
-
-* Find your department rank.
-
-### Upcoming Features
-
-* View trends in SGPA among different year batches of your department.
-
-* Compare your SGPA fluctuation to your batch's average SGPA fluctuations.
-
-* Create grade list of a particular subject for a particular semester.
-
-* Find most scoring subject for next semester.
-
-* Find most intimidating subject for next semester.
-
-* KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data.
-
-* Find number of Ex's, A's, B's etc. you have scored over your entire journey.
-
-* Find your best / worst semester.
-
-* Find your Institute Rank (IR)
     
