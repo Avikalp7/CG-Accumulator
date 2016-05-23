@@ -1,0 +1,154 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module CG-Acc</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>CG-Acc</strong></big></big></font></td></tr></table>
+    <p><tt>A&nbsp;software&nbsp;to&nbsp;help&nbsp;accumulate&nbsp;CGPA&nbsp;/&nbsp;SGPA&nbsp;data&nbsp;and&nbsp;extract&nbsp;useful&nbsp;results&nbsp;for&nbsp;the&nbsp;students&nbsp;of&nbsp;IIT&nbsp;KGP.<br>
+&nbsp;<br>
+Important&nbsp;Features:<br>
+1.&nbsp;SEMESTER&nbsp;SUMMARISER<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Summarises&nbsp;the&nbsp;important&nbsp;aspects&nbsp;of&nbsp;a&nbsp;particular&nbsp;semester&nbsp;for&nbsp;a&nbsp;department&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;based&nbsp;on&nbsp;previous&nbsp;year&nbsp;grades.&nbsp;The&nbsp;important&nbsp;aspects&nbsp;include:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Know&nbsp;the&nbsp;average&nbsp;SGPA&nbsp;for&nbsp;the&nbsp;semester&nbsp;(based&nbsp;on&nbsp;previous&nbsp;year)&nbsp;to&nbsp;get&nbsp;a&nbsp;fair&nbsp;idea&nbsp;about&nbsp;the&nbsp;semester's&nbsp;difficulty&nbsp;level.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Generating&nbsp;the&nbsp;grade&nbsp;distribution&nbsp;data&nbsp;for&nbsp;all&nbsp;the&nbsp;depth&nbsp;subjects&nbsp;in&nbsp;the&nbsp;previous&nbsp;year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Generate&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;breadth&nbsp;and&nbsp;elective&nbsp;courses&nbsp;that&nbsp;were&nbsp;actually&nbsp;taken&nbsp;up&nbsp;by&nbsp;previous&nbsp;year&nbsp;students.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Generate&nbsp;the&nbsp;grade&nbsp;distribution&nbsp;for&nbsp;these&nbsp;breadth&nbsp;and&nbsp;electives&nbsp;based&nbsp;on&nbsp;students&nbsp;of&nbsp;a&nbsp;particular&nbsp;department&nbsp;only.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Sort&nbsp;the&nbsp;depth&nbsp;subjects&nbsp;in&nbsp;decreasing&nbsp;order&nbsp;of&nbsp;'difficulty'&nbsp;based&nbsp;on&nbsp;a&nbsp;normalised&nbsp;score&nbsp;calculated&nbsp;from&nbsp;the&nbsp;grade&nbsp;distribution.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Find&nbsp;the&nbsp;subject&nbsp;that&nbsp;recorded&nbsp;most&nbsp;deregistrations,&nbsp;helping&nbsp;students&nbsp;know&nbsp;in&nbsp;advance&nbsp;about&nbsp;courses&nbsp;that&nbsp;are&nbsp;strict&nbsp;with&nbsp;attendance.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Find&nbsp;the&nbsp;most&nbsp;scoring&nbsp;subject&nbsp;-&nbsp;based&nbsp;on&nbsp;number&nbsp;of&nbsp;A's&nbsp;+&nbsp;Ex's,&nbsp;or&nbsp;find&nbsp;the&nbsp;subject&nbsp;with&nbsp;most&nbsp;F's&nbsp;involved.&nbsp;<br>
+&nbsp;<br>
+2.&nbsp;DEPARTMENT&nbsp;RANKS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;An&nbsp;important&nbsp;evaluation&nbsp;whenever&nbsp;a&nbsp;semester&nbsp;ends&nbsp;as&nbsp;the&nbsp;option&nbsp;to&nbsp;find&nbsp;the&nbsp;department&nbsp;rank&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;the&nbsp;basis&nbsp;of&nbsp;SGPA&nbsp;achieved&nbsp;in&nbsp;most&nbsp;recent&nbsp;results&nbsp;is&nbsp;available.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;CGPA&nbsp;based&nbsp;evaluation&nbsp;is&nbsp;also&nbsp;available.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Generating&nbsp;a&nbsp;department&nbsp;rank&nbsp;list&nbsp;for&nbsp;the&nbsp;entire&nbsp;batch&nbsp;on&nbsp;above&nbsp;parameters.<br>
+&nbsp;<br>
+3.&nbsp;RECENT&nbsp;SGPA&nbsp;LISTS&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Helps&nbsp;to&nbsp;generate&nbsp;the&nbsp;SGPA&nbsp;list&nbsp;for&nbsp;the&nbsp;entire&nbsp;batch&nbsp;based&nbsp;on&nbsp;the&nbsp;most&nbsp;recent&nbsp;results.<br>
+&nbsp;<br>
+4.&nbsp;OTHER&nbsp;FEATURES<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Generate&nbsp;entire&nbsp;SGPA&nbsp;history&nbsp;for&nbsp;a&nbsp;batch&nbsp;/&nbsp;individual.&nbsp;Data&nbsp;from&nbsp;seniors&nbsp;helpful&nbsp;in&nbsp;identifying&nbsp;SGPA&nbsp;pitfalls.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Get&nbsp;individual&nbsp;performance&nbsp;for&nbsp;only&nbsp;a&nbsp;particular&nbsp;semester<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;Get&nbsp;performance&nbsp;link&nbsp;to&nbsp;a&nbsp;roll&nbsp;number&nbsp;without&nbsp;the&nbsp;birth&nbsp;date&nbsp;parameter.<br>
+&nbsp;<br>
+Developed&nbsp;by&nbsp;:&nbsp;Avikalp&nbsp;Srivastava</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="https://docs.python.org/2/library/datetime.html">datetime</a><br>
+<a href="https://docs.python.org/2/library/math.html">math</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/2/library/operator.html">operator</a><br>
+<a href="https://docs.python.org/2/library/re.html">re</a><br>
+</td><td width="25%" valign=top><a href="https://pypi.python.org/pypi/requests/">requests</a><br>
+<a href="https://docs.python.org/2/library/time.html">time</a><br>
+</td><td width="25%" valign=top><a href="https://docs.python.org/2/library/webbrowser.html">webbrowser</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-check_for_update"><strong>check_for_update</strong></a>(content)</dt><dd><tt>Compares&nbsp;global&nbsp;var&nbsp;version&nbsp;with&nbsp;the&nbsp;version&nbsp;mentioned&nbsp;at&nbsp;<a href="http://cgaccumulator.blog.com/">http://cgaccumulator.blog.com/</a>.<br>
+&nbsp;<br>
+Prompts&nbsp;user&nbsp;for&nbsp;update,&nbsp;if&nbsp;available.</tt></dd></dl>
+ <dl><dt><a name="-check_results_availability"><strong>check_results_availability</strong></a>()</dt><dd><tt>Check&nbsp;if&nbsp;results&nbsp;are&nbsp;available&nbsp;at&nbsp;the&nbsp;moment&nbsp;(Eg-Not&nbsp;available&nbsp;before&nbsp;senate).&nbsp;Return&nbsp;status&nbsp;bool.</tt></dd></dl>
+ <dl><dt><a name="-check_roll_num_validity"><strong>check_roll_num_validity</strong></a>(user_roll_num)</dt><dd><tt>Checks&nbsp;validity&nbsp;of&nbsp;user_roll_num.&nbsp;Return&nbsp;type&nbsp;:&nbsp;bool</tt></dd></dl>
+ <dl><dt><a name="-connect"><strong>connect</strong></a>(fname, url_to_scrape)</dt><dd><tt>Connect&nbsp;to&nbsp;the&nbsp;given&nbsp;url,&nbsp;Return&nbsp;HTML&nbsp;content<br>
+&nbsp;<br>
+Use&nbsp;the&nbsp;text&nbsp;file&nbsp;with&nbsp;name&nbsp;fname&nbsp;for&nbsp;the&nbsp;parsed&nbsp;HTML<br>
+Return&nbsp;the&nbsp;parsed&nbsp;HTML&nbsp;content&nbsp;as&nbsp;a&nbsp;string<br>
+Return&nbsp;'Exit'&nbsp;if&nbsp;connection&nbsp;failure&nbsp;occurs&nbsp;3&nbsp;times</tt></dd></dl>
+ <dl><dt><a name="-find_cg_batch"><strong>find_cg_batch</strong></a>(year, dep, msc_dep_bool)</dt><dd><tt>Prints&nbsp;the&nbsp;CG&nbsp;list&nbsp;for&nbsp;the&nbsp;batch&nbsp;with&nbsp;given&nbsp;year&nbsp;and&nbsp;dep.&nbsp;Table&nbsp;contents&nbsp;:&nbsp;Roll&nbsp;Number,&nbsp;CGPA,&nbsp;Name<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;-&nbsp;1.1&nbsp;-&gt;&nbsp;2&nbsp;-&gt;&nbsp;Enter&nbsp;year&nbsp;-&gt;&nbsp;Enter&nbsp;dep<br>
+CGPA&nbsp;-&gt;&nbsp;Batch</tt></dd></dl>
+ <dl><dt><a name="-find_cg_individual"><strong>find_cg_individual</strong></a>(roll_num, content<font color="#909090">=''</font>)</dt><dd><tt>Find&nbsp;and&nbsp;return&nbsp;CGPA&nbsp;for&nbsp;given&nbsp;roll&nbsp;num.&nbsp;Returns&nbsp;-1&nbsp;if&nbsp;no&nbsp;results&nbsp;exist&nbsp;for&nbsp;the&nbsp;given&nbsp;roll&nbsp;num.<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;-&nbsp;1.1&nbsp;-&gt;&nbsp;1&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;Number&nbsp;<br>
+CGPA&nbsp;-&gt;&nbsp;Individual</tt></dd></dl>
+ <dl><dt><a name="-find_dep_rank_individual"><strong>find_dep_rank_individual</strong></a>(roll_num, choice<font color="#909090">='1'</font>, content<font color="#909090">=''</font>)</dt><dd><tt>Choice&nbsp;=&nbsp;'1'&nbsp;-&nbsp;CG&nbsp;based&nbsp;department&nbsp;rank,&nbsp;Choice&nbsp;=&nbsp;'2'&nbsp;-&nbsp;SG&nbsp;based.&nbsp;Returns&nbsp;-1&nbsp;if&nbsp;no&nbsp;record&nbsp;exists.<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;2.1&nbsp;-&gt;&nbsp;1&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;Number&nbsp;or&nbsp;2.2&nbsp;-&gt;&nbsp;1&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;Number&nbsp;<br>
+Department&nbsp;Rank&nbsp;Based&nbsp;on&nbsp;CG&nbsp;-&gt;&nbsp;Inidividual&nbsp;or&nbsp;Department&nbsp;Rank&nbsp;Based&nbsp;on&nbsp;SG&nbsp;-&gt;&nbsp;Inidividual</tt></dd></dl>
+ <dl><dt><a name="-find_dep_rank_list_CG"><strong>find_dep_rank_list_CG</strong></a>(year, dep, msc_dep_bool)</dt><dd><tt>Generate&nbsp;and&nbsp;print&nbsp;department&nbsp;ranks&nbsp;for&nbsp;the&nbsp;given&nbsp;batch&nbsp;based&nbsp;on&nbsp;CGPA<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;2.1&nbsp;-&gt;&nbsp;2&nbsp;-&gt;&nbsp;Enter&nbsp;Year&nbsp;-&gt;&nbsp;Enter&nbsp;Dep<br>
+Department&nbsp;Rank&nbsp;Based&nbsp;on&nbsp;CG&nbsp;-&gt;&nbsp;Batch</tt></dd></dl>
+ <dl><dt><a name="-find_dep_rank_list_SG"><strong>find_dep_rank_list_SG</strong></a>(year, dep, msc_dep_bool)</dt><dd><tt>Generate&nbsp;and&nbsp;print&nbsp;department&nbsp;ranks&nbsp;for&nbsp;the&nbsp;given&nbsp;batch&nbsp;based&nbsp;on&nbsp;SGPA<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;2.2&nbsp;-&gt;&nbsp;2&nbsp;-&gt;&nbsp;Enter&nbsp;Year&nbsp;-&gt;&nbsp;Enter&nbsp;Dep<br>
+Department&nbsp;Rank&nbsp;Based&nbsp;on&nbsp;SG&nbsp;-&gt;&nbsp;Batch</tt></dd></dl>
+ <dl><dt><a name="-find_depth_sub_grade_list"><strong>find_depth_sub_grade_list</strong></a>(dep, sem_num, msc_dep_bool, print_table<font color="#909090">='False'</font>)</dt><dd><tt>The&nbsp;wrapper&nbsp;function&nbsp;for&nbsp;gen_depth_sub_grade_list.&nbsp;Returns&nbsp;dict&nbsp;with&nbsp;subj&nbsp;names&nbsp;as&nbsp;key&nbsp;and&nbsp;grade&nbsp;lists&nbsp;as&nbsp;values.<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;3.1&nbsp;-&gt;&nbsp;Enter&nbsp;Semester&nbsp;Number<br>
+Depth&nbsp;Subjects&nbsp;Grade&nbsp;List</tt></dd></dl>
+ <dl><dt><a name="-find_name"><strong>find_name</strong></a>(roll_num, content<font color="#909090">=''</font>)</dt><dd><tt>Find&nbsp;name&nbsp;for&nbsp;the&nbsp;given&nbsp;roll&nbsp;number.&nbsp;Returns&nbsp;''&nbsp;if&nbsp;record&nbsp;doesn't&nbsp;exist.</tt></dd></dl>
+ <dl><dt><a name="-find_recent_sg_individual"><strong>find_recent_sg_individual</strong></a>(user_roll_num, content<font color="#909090">=''</font>)</dt><dd><tt>Return&nbsp;most&nbsp;recent&nbsp;SGPA&nbsp;for&nbsp;given&nbsp;roll&nbsp;number&nbsp;<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;1.3&nbsp;-&gt;&nbsp;1&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;Number<br>
+Recent&nbsp;SGPA&nbsp;-&gt;&nbsp;Individual</tt></dd></dl>
+ <dl><dt><a name="-find_recent_sg_or_sg_list_batch"><strong>find_recent_sg_or_sg_list_batch</strong></a>(year, dep, msc_dep_bool, choice<font color="#909090">='0'</font>)</dt><dd><tt>Choice&nbsp;=&nbsp;'0'&nbsp;for&nbsp;Sg&nbsp;list&nbsp;of&nbsp;given&nbsp;batch,&nbsp;'1'&nbsp;for&nbsp;Recent&nbsp;sg&nbsp;of&nbsp;given&nbsp;batch.&nbsp;<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;1.2&nbsp;-&gt;&nbsp;2&nbsp;-&gt;&nbsp;Enter&nbsp;Year&nbsp;-&gt;&nbsp;Enter&nbsp;Dep&nbsp;or&nbsp;1.3&nbsp;-&gt;&nbsp;2&nbsp;-&gt;&nbsp;Enter&nbsp;Year&nbsp;-&gt;&nbsp;Enter&nbsp;Dep<br>
+SGPA&nbsp;List&nbsp;-&gt;&nbsp;Batch&nbsp;or&nbsp;Recent&nbsp;SGPA&nbsp;-&gt;&nbsp;Individual</tt></dd></dl>
+ <dl><dt><a name="-find_sg_list_individual"><strong>find_sg_list_individual</strong></a>(user_roll_num, content<font color="#909090">=''</font>)</dt><dd><tt>Return&nbsp;list&nbsp;of&nbsp;SGPA&nbsp;over&nbsp;the&nbsp;years&nbsp;for&nbsp;the&nbsp;given&nbsp;roll&nbsp;number<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;-&nbsp;1.2&nbsp;-&gt;&nbsp;1&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;Number<br>
+SGPA&nbsp;List&nbsp;-&gt;&nbsp;Individual</tt></dd></dl>
+ <dl><dt><a name="-find_sub_most_a_ex"><strong>find_sub_most_a_ex</strong></a>(grade_dict)</dt><dd><tt>Given&nbsp;subjects&nbsp;with&nbsp;their&nbsp;grade&nbsp;lists,&nbsp;prints&nbsp;subj&nbsp;with&nbsp;most&nbsp;A's&nbsp;+&nbsp;Ex's.</tt></dd></dl>
+ <dl><dt><a name="-find_sub_most_x_f"><strong>find_sub_most_x_f</strong></a>(grade_dict, choice)</dt><dd><tt>Given&nbsp;subjects&nbsp;with&nbsp;their&nbsp;grade&nbsp;lists,&nbsp;prints&nbsp;subj&nbsp;with&nbsp;most&nbsp;F's&nbsp;and&nbsp;Deregs.</tt></dd></dl>
+ <dl><dt><a name="-find_subjects_by_difficulty_level"><strong>find_subjects_by_difficulty_level</strong></a>(grade_dict)</dt><dd><tt>Prints&nbsp;difficlulty&nbsp;scores&nbsp;(as&nbsp;computed&nbsp;by&nbsp;find_sum)&nbsp;for&nbsp;subjects&nbsp;in&nbsp;grade_dict</tt></dd></dl>
+ <dl><dt><a name="-find_sum"><strong>find_sum</strong></a>(alist)</dt><dd><tt>Find&nbsp;normalised&nbsp;difficulty&nbsp;score&nbsp;from&nbsp;a&nbsp;particular&nbsp;subject's&nbsp;grade&nbsp;list&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+No.&nbsp;of&nbsp;Ex&nbsp;are&nbsp;multiplied&nbsp;by&nbsp;0,&nbsp;A's&nbsp;by&nbsp;1,&nbsp;B's&nbsp;by&nbsp;2&nbsp;and&nbsp;so&nbsp;on.&nbsp;And&nbsp;final&nbsp;sum&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-gen_depth_sub_grade_list"><strong>gen_depth_sub_grade_list</strong></a>(year, dep, msc_dep_bool, sub_dict)</dt><dd><tt>Given&nbsp;names&nbsp;of&nbsp;depth&nbsp;subjects&nbsp;as&nbsp;a&nbsp;dict,&nbsp;generate&nbsp;grade&nbsp;list&nbsp;for&nbsp;them&nbsp;for&nbsp;the&nbsp;given&nbsp;batch&nbsp;&amp;&nbsp;sem_num&nbsp;<br>
+&nbsp;<br>
+A&nbsp;dictionary&nbsp;with&nbsp;depth&nbsp;subjects'&nbsp;name&nbsp;as&nbsp;keys&nbsp;and&nbsp;lists&nbsp;of&nbsp;len&nbsp;=&nbsp;8&nbsp;with&nbsp;all&nbsp;elements&nbsp;=&nbsp;0&nbsp;is&nbsp;passed&nbsp;as&nbsp;sub_dict<br>
+The&nbsp;lists&nbsp;corresponding&nbsp;to&nbsp;the&nbsp;subjects&nbsp;are&nbsp;modified&nbsp;on&nbsp;basis&nbsp;of&nbsp;the&nbsp;grades.</tt></dd></dl>
+ <dl><dt><a name="-get_br_and_elective_grade_list"><strong>get_br_and_elective_grade_list</strong></a>(dep, sem_num)</dt><dd><tt>Print&nbsp;grade&nbsp;list&nbsp;for&nbsp;all&nbsp;electives&nbsp;and&nbsp;breadth&nbsp;fr&nbsp;prev&nbsp;yr&nbsp;batch&nbsp;for&nbsp;given&nbsp;sem_num<br>
+&nbsp;<br>
+Calls&nbsp;get_br_el_sub_name_list_helper&nbsp;to&nbsp;get&nbsp;names&nbsp;of&nbsp;all&nbsp;such&nbsp;subjects&nbsp;and&nbsp;generates&nbsp;grade&nbsp;lists</tt></dd></dl>
+ <dl><dt><a name="-get_br_el_sub_name_list"><strong>get_br_el_sub_name_list</strong></a>(year, dep, sem_num, br_list, el_list, content<font color="#909090">=''</font>)</dt><dd><tt>Return&nbsp;list&nbsp;of&nbsp;name&nbsp;of&nbsp;breadth&nbsp;and&nbsp;elective&nbsp;subjects&nbsp;for&nbsp;this&nbsp;batch</tt></dd></dl>
+ <dl><dt><a name="-get_br_el_sub_name_list_helper"><strong>get_br_el_sub_name_list_helper</strong></a>(year, dep, sem_num)</dt><dd><tt>Function&nbsp;to&nbsp;get&nbsp;breadth&nbsp;and&nbsp;elective&nbsp;subjects&nbsp;taken&nbsp;by&nbsp;previous&nbsp;yr&nbsp;students&nbsp;of&nbsp;the&nbsp;given&nbsp;batch&nbsp;for&nbsp;the&nbsp;given&nbsp;sem_num<br>
+&nbsp;<br>
+Traverses&nbsp;all&nbsp;roll&nbsp;numbers&nbsp;of&nbsp;the&nbsp;batch&nbsp;to&nbsp;get&nbsp;the&nbsp;exhaustive&nbsp;list.<br>
+Returns&nbsp;a&nbsp;combined&nbsp;list,&nbsp;have&nbsp;list&nbsp;of&nbsp;breadths&nbsp;as&nbsp;first&nbsp;and&nbsp;electives&nbsp;as&nbsp;second&nbsp;element.</tt></dd></dl>
+ <dl><dt><a name="-get_depth_sub_name_list"><strong>get_depth_sub_name_list</strong></a>(year, dep, sem_num, content<font color="#909090">=''</font>)</dt><dd><tt>Return&nbsp;list&nbsp;of&nbsp;name&nbsp;of&nbsp;depth&nbsp;subjects&nbsp;(excluding&nbsp;EAA)&nbsp;for&nbsp;this&nbsp;batch</tt></dd></dl>
+ <dl><dt><a name="-get_prev_year"><strong>get_prev_year</strong></a>(sem_num)</dt><dd><tt>Given&nbsp;semester&nbsp;number,&nbsp;find&nbsp;the&nbsp;year&nbsp;of&nbsp;the&nbsp;batch&nbsp;which&nbsp;most&nbsp;recently&nbsp;completed&nbsp;that&nbsp;semester&nbsp;number</tt></dd></dl>
+ <dl><dt><a name="-individual_full_performance"><strong>individual_full_performance</strong></a>(user_roll_num)</dt><dd><tt>Opens&nbsp;the&nbsp;erp&nbsp;performance&nbsp;link&nbsp;for&nbsp;the&nbsp;given&nbsp;roll&nbsp;num&nbsp;in&nbsp;user's&nbsp;default&nbsp;browser&nbsp;in&nbsp;a&nbsp;new&nbsp;tab.&nbsp;<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;4.1&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;number<br>
+Full&nbsp;Performance</tt></dd></dl>
+ <dl><dt><a name="-individual_semester_display"><strong>individual_semester_display</strong></a>(user_roll_num, sem_num, content<font color="#909090">=''</font>)</dt><dd><tt>Display&nbsp;the&nbsp;grades&nbsp;of&nbsp;an&nbsp;individual&nbsp;for&nbsp;a&nbsp;particular&nbsp;semester&nbsp;along&nbsp;with&nbsp;SGPA.&nbsp;<br>
+&nbsp;<br>
+Choice&nbsp;Route&nbsp;:&nbsp;4.2&nbsp;-&gt;&nbsp;Enter&nbsp;Roll&nbsp;Number<br>
+Particular&nbsp;Semester</tt></dd></dl>
+ <dl><dt><a name="-is_int"><strong>is_int</strong></a>(s)</dt><dd><tt>Check&nbsp;if&nbsp;given&nbsp;var&nbsp;is&nbsp;/&nbsp;can&nbsp;be&nbsp;converted&nbsp;to&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-is_msc_dep"><strong>is_msc_dep</strong></a>(dep)</dt><dd><tt>Given&nbsp;dep&nbsp;str,&nbsp;check&nbsp;if&nbsp;it's&nbsp;one&nbsp;of&nbsp;the&nbsp;Msc&nbsp;dep&nbsp;offered&nbsp;by&nbsp;IIT&nbsp;KGP.&nbsp;Return&nbsp;bool</tt></dd></dl>
+ <dl><dt><a name="-is_number"><strong>is_number</strong></a>(s)</dt><dd><tt>Check&nbsp;if&nbsp;given&nbsp;var&nbsp;is&nbsp;/&nbsp;can&nbsp;be&nbsp;converted&nbsp;to&nbsp;float</tt></dd></dl>
+ <dl><dt><a name="-take_dep"><strong>take_dep</strong></a>()</dt><dd><tt>Take&nbsp;user&nbsp;input&nbsp;for&nbsp;department,&nbsp;validate&nbsp;and&nbsp;return&nbsp;department.&nbsp;Return&nbsp;type&nbsp;:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-take_main_choice"><strong>take_main_choice</strong></a>()</dt><dd><tt>Take&nbsp;user&nbsp;input&nbsp;for&nbsp;main&nbsp;menu&nbsp;choice&nbsp;and&nbsp;proceed&nbsp;accordingly.<br>
+&nbsp;<br>
+Return&nbsp;bool,&nbsp;whether&nbsp;to&nbsp;return&nbsp;to&nbsp;main&nbsp;menu&nbsp;or&nbsp;not.</tt></dd></dl>
+ <dl><dt><a name="-take_roll_num"><strong>take_roll_num</strong></a>()</dt><dd><tt>Take&nbsp;a&nbsp;roll&nbsp;number&nbsp;input&nbsp;from&nbsp;user&nbsp;until&nbsp;it&nbsp;is&nbsp;valid,&nbsp;then&nbsp;return&nbsp;it.&nbsp;Return&nbsp;type&nbsp;:&nbsp;str</tt></dd></dl>
+ <dl><dt><a name="-take_sem_num"><strong>take_sem_num</strong></a>()</dt><dd><tt>Take&nbsp;user&nbsp;input&nbsp;for&nbsp;semester&nbsp;number,&nbsp;validate&nbsp;and&nbsp;return.&nbsp;Return&nbsp;type&nbsp;:&nbsp;int</tt></dd></dl>
+ <dl><dt><a name="-take_year"><strong>take_year</strong></a>()</dt><dd><tt>Take&nbsp;user&nbsp;input&nbsp;for&nbsp;batch&nbsp;start&nbsp;year,&nbsp;validate&nbsp;and&nbsp;return&nbsp;year.&nbsp;Return&nbsp;type&nbsp;:&nbsp;str</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>version</strong> = '0.5.7'</td></tr></table>
+</body></html>
