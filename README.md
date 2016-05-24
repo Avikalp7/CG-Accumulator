@@ -46,8 +46,4 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 4. Use 'python -m CG-Acc' command to run the application.
 
-#####Ubuntu
-    $ sudo apt-get python.requests
-    $ pip install bs4
-    $ python cg_accumulator.py
     
