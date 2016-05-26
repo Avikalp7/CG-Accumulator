@@ -35,15 +35,26 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 #####Windows
 1. Make sure you have Python 2.7 installed. Open cmd and enter the 'python' (without quotes) command.
-    If the 'python is not recognised as an internal or external command' error shows up, go to the python website https://www.python.org/downloads/ , download Python 2.7.11 and follow the steps here - https://youtu.be/gD4eulxGNok?t=1m9s
+    If the 'python is not recognised as an internal or external command' error shows up, go to the [python website](https://www.python.org/downloads/), download Python 2.7.11 and follow the steps [here](https://youtu.be/gD4eulxGNok?t=1m9s).
     
 2. Make sure you have pip installed. Open cmd and enter the 'pip' command.
-    If the 'pip is not recognized as an internal or external command' error shows up, download from https://drive.google.com/file/d/0B0uazFxiiqNYNTFWZ1doV2xRUDA/view?usp=sharing
+    If the 'pip is not recognized as an internal or external command' error shows up, download from this [link](https://drive.google.com/file/d/0B0uazFxiiqNYNTFWZ1doV2xRUDA/view?usp=sharing)
     Go the folder where the get-pip.py is downloaded and enter 'cmd' (without quotes) in the address bar.
     Enter the 'python get-pip.py' command in the cmd.
     
-3. Enter 'pip install CG-Acc' command to download this software
+3. Enter `pip install CG-Acc` command to download this software
 
-4. Use 'python -m CG-Acc' command to run the application.
+4. Use `python -m CG-Acc` command to run the application.
 
-    
+#####Linux (Debian)
+1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
+```shell
+$ sudo apt-get install python2.7
+$ sudo apt-get install python-pip python-dev build-essential 
+$ sudo pip install --upgrade pip 
+$ sudo pip install --upgrade virtualenv 
+```
+
+2. Enter `pip install CG-Acc` command to download this software
+
+3. Use `python -m CG-Acc` command to run the application.
