@@ -48,6 +48,8 @@ Developed by : Avikalp Srivastava
 # Software Requirements
 # [Python 2.7, pip] 
 
+# Usage : Exception Handling
+from __future__ import with_statement
 # Usage : Sort dictionary based on keys / values
 import operator
 # Usage : open a link in user's default web browser.
@@ -66,6 +68,13 @@ import datetime
 import math
 # Usage : -
 import time
+# Usage : Timeout a request
+import eventlet
+eventlet.monkey_patch(socket = True)
+
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 
 # Stores the version of the software
 # Used for Software Update, after matching latest version number available from http://cgaccumulator.blog.com/
@@ -121,14 +130,17 @@ def connect(fname, url_to_scrape):
     Return 'Exit' if connection failure occurs 3 times
     """
     try:
-        r = requests.get(url_to_scrape)
+        with eventlet.Timeout(12, Exception):
+            r = requests.get(url_to_scrape, verify = False)
         soup = BeautifulSoup(r.text, "html.parser")
         with open(fname, "w") as text_file:
             text_file.write("{}".format(soup))
         with open(fname) as f:
             content = f.readlines()
+        connect.counter = 0
         return content
-    except requests.exceptions.RequestException:
+    #except requests.exceptions.RequestException:
+    except Exception:
         # Static var storing then number of times attempt to connect has failed
         # If >=4, then we assume that user is not connected to the internet.
         connect.counter += 1
@@ -144,6 +156,8 @@ def connect(fname, url_to_scrape):
                 print "\nExiting...."
                 exit(0)
         else:
+            if connect.counter == 1:
+                print 'Experiencing slow internet connectivity...'
             # print 'Connection Error'
             # print 'Retrying....'
             return connect(fname, url_to_scrape)
@@ -265,7 +279,8 @@ def get_prev_year(sem_num):
     if current_month >= 5:
         current_year += 0.6
     # For sem num between 1 to 8, year always takes values between 12 to 15
-    prev_year = math.floor(current_year - (sem_num + 1)/float(2))
+    prev_year = int(math.floor(current_year - (sem_num + 1)/float(2)))
+    prev_year -= 2000
     return str(prev_year)
 
 
@@ -353,6 +368,8 @@ def find_cg_batch(year, dep, msc_dep_bool):
             student_count += 1
             cg_total += cg
             name = find_name(rollno, content)
+            print 'Processing', 
+            print rollno, name
             table.add_row([rollno, name, cg])
         # If the subject is not Msc, then we make a transition to dual degree students
         if bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
@@ -426,6 +443,8 @@ def find_recent_sg_or_sg_list_batch(year, dep, msc_dep_bool, choice = '0'):
                 sg = find_recent_sg_individual(rollno, content)
                 sg_total += sg
             name = find_name(rollno, content)
+            print 'Processing', 
+            print rollno, name
             if (choice == '0' and len(sg_list) != 0) or (choice == '1' and sg != -1):
                 if choice == '0':
                     table.add_row([rollno, name, str(sg_list)])
@@ -511,6 +530,8 @@ def find_dep_rank_individual(roll_num, choice = '1', content = ''):
         if len(content) < 50:
             bad_count += 1
         else:
+            print 'Processing', 
+            print rollno
             bad_count = 0
             student_count += 1
             if choice == '1':
@@ -554,6 +575,8 @@ def find_dep_rank_list_CG(year, dep, msc_dep_bool):
             bad_count = 0
             student_count += 1
             name = find_name(rollno, content)
+            print 'Processing', 
+            print rollno, name
             # Handling duplicate names. Will label more than 2 dups in same fashion 
             try:
                 dep_dict[name]
@@ -641,16 +664,15 @@ def get_depth_sub_name_list(year, dep, sem_num, content = ''):
     """ Return list of name of depth subjects (excluding EAA) for this batch"""
     sub_name_list = []
 
-    # tmp_roll_count = 10000
-    # if is_msc_dep(dep):
-    #     tmp_roll_count = 20000
-    # while len(content) <= 50:
-    #   tmp_roll_count += 1
-    #   user_roll_num = year + dep + str(tmp_roll_count)
-    #   url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + str(user_roll_num)
-    #   fname = "Output.txt"
-    #   content = connect(fname, url_to_scrape)
-
+    tmp_roll_count = 10000
+    if is_msc_dep(dep):
+        tmp_roll_count = 20000
+    while len(content) <= 50:
+      tmp_roll_count += 1
+      user_roll_num = year + dep + str(tmp_roll_count)
+      url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + str(user_roll_num)
+      fname = "Output.txt"
+      content = connect(fname, url_to_scrape)
     # EXCLUDE
     # fname = 'divyansh.html'
     # with open(fname) as f:
@@ -701,33 +723,43 @@ def gen_depth_sub_grade_list(year, dep, msc_dep_bool, sub_dict):
             bad_count += 1
         else :
             bad_count = 0
+            print '\nProcessing', 
+            print rollno
             for sub in sub_dict:
                 str_to_find = '<td>' + sub + '</td>'
                 index = 0
                 for line in content:
                     if line.find(str_to_find) != -1:
                         currentLine = content[index + 3]
-                        matchObj = re.match( r'<td align="center">([A,B,C,D,P,F])</td>', currentLine, re.M|re.I)
+                        matchObj = re.match( r'<td align="center">([A,B,C,D,P])</td>', currentLine, re.M|re.I)
                         if not matchObj:
                             matchObj = re.match( r'<td align="center">([E])X</td>', currentLine, re.M|re.I)
                         if not matchObj:
-                            matchObj = re.match( r'<td align="center">([X])<(.*)', currentLine, re.M|re.I)
+                            matchObj = re.match( r'<td align="center">([X,F])<(.*)', currentLine, re.M|re.I)
                         if matchObj:
                             if matchObj.group(1) == 'E':
+                                print sub + ' EX',
                                 sub_dict[sub][0] += 1
                             elif matchObj.group(1) == 'A':
+                                print sub + ' A',
                                 sub_dict[sub][1] += 1
                             elif matchObj.group(1) == 'B':
+                                print sub + ' B',
                                 sub_dict[sub][2] += 1
                             elif matchObj.group(1) == 'C':
+                                print sub + ' C',
                                 sub_dict[sub][3] += 1
                             elif matchObj.group(1) == 'D':
+                                print sub + ' D',
                                 sub_dict[sub][4] += 1
                             elif matchObj.group(1) == 'P':
+                                print sub + ' P',
                                 sub_dict[sub][5] += 1
                             elif matchObj.group(1) == 'F':
+                                print sub + ' F',
                                 sub_dict[sub][6] += 1
                             elif matchObj.group(1) == 'X':
+                                print sub + ' X',
                                 sub_dict[sub][7] += 1
                         break
                     index += 1
@@ -749,10 +781,11 @@ def find_depth_sub_grade_list(dep, sem_num, msc_dep_bool, print_table = 'False')
     for item in depth_sub_name_list:
         # List corresponds to Ex, A, B, C, D, P, F, X
         grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
+    gen_depth_sub_grade_list(prev_year, dep, is_msc_dep(dep), grade_dict)
     if not print_table:
         return grade_dict
     # Else :
-    print '\nPrevious year grade list of depth subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
+    print '\n\nPrevious year grade list of depth subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
     table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
     table.align = 'l'
     for item in grade_dict:
@@ -799,7 +832,7 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
     """
     br_list = []
     el_list = []
-
+    msc_dep_bool = is_msc_dep(dep)
     roll_count = 10000
     # If department is Msc, roll count of last 5 digits starts from 20000
     if msc_dep_bool:
@@ -810,7 +843,7 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
     bad_count = 0
     # Sum of CG's for this batch. Used for calculating average.
     # Initialising Table
-    while True:
+    while True:  #######################################################################
         # Moving to next student
         roll_count += 1
         rollno = str(year) + str(dep) + str(roll_count)
@@ -830,9 +863,12 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
             # Reset bad count, since it stores the CONSECUTIVE bad roll numbers encountered
             bad_count = 0
             student_count += 1
-            get_br_el_sub_name_list(year, dp, sem_num, br_list, el_list, content)
+            print 'Processing', 
+            print rollno
+            get_br_el_sub_name_list(year, dep, sem_num, br_list, el_list, content)
         # If the subject is not Msc, then we make a transition to dual degree students
         if bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
+            # break #######################################################################
             roll_count = 30000
         # Conditions for ending, self explanatory.
         elif bad_count >= 5 and ((not msc_dep_bool and roll_count > 30000) or msc_dep_bool):
@@ -878,28 +914,34 @@ def get_br_and_elective_grade_list(dep, sem_num):
     for item in combined_list[0]:
         # List corresponds to Ex, A, B, C, D, P, F, X
         grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
-    gen_depth_sub_grade_list(year, dep, is_msc_dep(dep), grade_dict)
-    print '\nPrevious year grade list of BREADTH subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
-    table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
-    table.align = 'l'
-    for item in grade_dict:
-        table.add_row([item.replace("&amp;", "&"), grade_dict[item][0],  grade_dict[item][1], grade_dict[item][2], grade_dict[item][3],
-            grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
-    print table
-    print ''
-    grade_dict.clear()
+    if len(combined_list[0]) > 0:
+        gen_depth_sub_grade_list(year, dep, is_msc_dep(dep), grade_dict)
+        print '\n\nPrevious year grade list of BREADTH subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
+        table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
+        table.align = 'l'
+        for item in grade_dict:
+            table.add_row([item.replace("&amp;", "&"), grade_dict[item][0],  grade_dict[item][1], grade_dict[item][2], grade_dict[item][3],
+                grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
+        print table
+        print ''
+        grade_dict.clear()
+    else:
+        print '\n\nNo Breadth Subjects found for this semester.\n'
     for item in combined_list[1]:
         # List corresponds to Ex, A, B, C, D, P, F, X
         grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
-    gen_depth_sub_grade_list(year, dep, is_msc_dep(dep), grade_dict)
-    print '\nPrevious year grade list of ELECTIVE subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
-    table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
-    table.align = 'l'
-    for item in grade_dict:
-        table.add_row([item.replace("&amp;", "&"), grade_dict[item][0],  grade_dict[item][1], grade_dict[item][2], grade_dict[item][3],
-            grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
-    print table
-    print ''
+    if len(combined_list[1]) > 0:
+        gen_depth_sub_grade_list(year, dep, is_msc_dep(dep), grade_dict)
+        print '\nPrevious year grade list of ELECTIVE subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
+        table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
+        table.align = 'l'
+        for item in grade_dict:
+            table.add_row([item.replace("&amp;", "&"), grade_dict[item][0],  grade_dict[item][1], grade_dict[item][2], grade_dict[item][3],
+                grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
+        print table
+        print ''
+    else:
+        print '\n\nNo Electives found for this semester.\n'
 
     
 
@@ -1198,12 +1240,12 @@ if __name__ == "__main__":
     content = connect("Output.txt", 'http://cgaccumulator.blog.com/')
     # Checking availability of results.
     if not check_results_availability():
-        print "\nSorry. Right now the results are not available due to ongoing upadations in the institute database."
+        print "\nSorry. Right now the results are not available due to ongoing upadations in the institute database."   ################
         key = raw_input("Press Enter to Exit.")
         exit(0)
     print '\nConnected!'
     # Checking for latest version
-    check_for_update(content)
+    check_for_update(content)  ########################################################################################################
     # Bool var storing user's choice to return to / display main menu.
     # Initially set as True, to display menu on start of program.
     main_menu_status = True
