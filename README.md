@@ -70,9 +70,50 @@ $ sudo pip install --upgrade virtualenv
 3. Use `python -m CG-Acc` command to run the application.
 
 
-####Working (Concise)
+
+###Working (Concise)
 ######Main Menu
-![ScreenShot](Screenshots/Main_Menu.png)
+![ScreenShot](Screenshots/1_main_menu.png)
+
 
 ######Semester Summariser
+Function - Summarises important aspects of a semester acc. to prevoius year grades.
+
+* Grade List for All Subjects
+
+![ScreenShot](Screenshots/2_grade_list.png)
+
+* All Electives taken up (with grade list), calculation of difficulty score (relative)
+
+![ScreenShot](Screenshots/3_elective_diff_score.png)
+
+(PS : only 1 elective subject was available to this department for the 5th semester.)
+
+
+* Other useful information
+
+![ScreenShot](Screenshots/4_other_sem_info.png)
+
+
+######Department Ranks
+
+* Choice entered for department rank list based on most recent results
+
+![ScreenShot](Screenshots/5_dep_rank_choice.png)
+
+* Department Rank List for Entire Batch
+
+![ScreenShot](Screenshots/6_dep_rank_list.png)
+
+* Individual Dep Rank based on recent results
+
+![ScreenShot](Screenshots/7_dep_rank_indiv.png)
+
+* Individual Dep Rank based on CGPA
+
+![ScreenShot](Screenshots/8_dep_rank_CG.png)
+
+
+
+
 
