@@ -146,6 +146,7 @@ def connect(fname, url_to_scrape):
         connect.counter += 1
         if connect.counter >= 4:
             connect.counter = 0
+            print '\a'
             reconnect_choice = raw_input('\nYou don\'t seem to be having internet connectivity. Enter r to try again, x to exit :  ')
             while reconnect_choice not in ['r', 'x']:
                 reconnect_choice = raw_input('Invalid choice! Please enter r to try reconnecting again, or enter x to exit :  ')
@@ -766,6 +767,7 @@ def gen_depth_sub_grade_list(year, dep, msc_dep_bool, sub_dict):
         if bad_count >= 5 and not msc_dep_bool and last5 < 30000:
             last5 = 30000
         if bad_count >= 5 and (msc_dep_bool or last5 > 30000):
+            print ''
             return ##################################
 
 
@@ -977,16 +979,18 @@ def find_sub_most_x_f(grade_dict, choice):
                 sub_list.append(item.replace("&amp;", "&"))
     if choice == 1:
         if len(sub_list) > 0:
-            print 'Subject(s) with most Deregistrations : ',
+            print '\nSubject(s) with most Deregistrations : ',
             for item in sub_list:
                 print item,
+            print '\nNumber of deregistrations : ' + str(maxim)
         else:
             print '\nNo subjects with Deregistrations found :D'
     elif choice == 2:
         if len(sub_list) > 0:
-            print 'Subject(s) with most F grades : ',
+            print '\nSubject(s) with most F grades : ',
             for item in sub_list:
                 print item,
+            print '\nNumber of F grades : ' + str(maxim)
         else:
             print '\nNo subjects with F grades found :D'
     print ''
