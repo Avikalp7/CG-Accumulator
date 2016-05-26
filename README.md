@@ -46,11 +46,21 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 4. Use `python -m CG-Acc` command to run the application.
 
-#####Linux (Debian)
+#####Linux
 1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
+
+######Debian
 ```shell
 $ sudo apt-get install python2.7
 $ sudo apt-get install python-pip python-dev build-essential 
+$ sudo pip install --upgrade pip 
+$ sudo pip install --upgrade virtualenv 
+```
+
+######Fedora
+```shell
+$ sudo yum install python2.7 epel-release
+$ sudo yum install -y python-pip
 $ sudo pip install --upgrade pip 
 $ sudo pip install --upgrade virtualenv 
 ```
