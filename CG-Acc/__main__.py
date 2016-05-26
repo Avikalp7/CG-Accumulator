@@ -828,10 +828,10 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
     """ Function to get breadth and elective subjects taken by previous yr students of the given batch for the given sem_num
 
     Traverses all roll numbers of the batch to get the exhaustive list.
-    Returns a combined list, have list of breadths as first and electives as second element. 
+    Returns a combined list, have dict of breadths as first and electives as second element. 
     """
-    br_list = []
-    el_list = []
+    br_dict = {}
+    el_dict = {}
     msc_dep_bool = is_msc_dep(dep)
     roll_count = 10000
     # If department is Msc, roll count of last 5 digits starts from 20000
@@ -843,7 +843,7 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
     bad_count = 0
     # Sum of CG's for this batch. Used for calculating average.
     # Initialising Table
-    while True:  #######################################################################
+    while True: ######################################### 
         # Moving to next student
         roll_count += 1
         rollno = str(year) + str(dep) + str(roll_count)
@@ -865,7 +865,7 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
             student_count += 1
             print 'Processing', 
             print rollno
-            get_br_el_sub_name_list(year, dep, sem_num, br_list, el_list, content)
+            get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, content)
         # If the subject is not Msc, then we make a transition to dual degree students
         if bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
             # break #######################################################################
@@ -873,11 +873,15 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
         # Conditions for ending, self explanatory.
         elif bad_count >= 5 and ((not msc_dep_bool and roll_count > 30000) or msc_dep_bool):
             break
-    return [br_list, el_list]
+    return [br_dict, el_dict]
 
 
-def get_br_el_sub_name_list(year, dep, sem_num, br_list, el_list, content = ''):
-    """ Return list of name of breadth and elective subjects for this batch """
+def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, content = ''):
+    """ Return list of name of breadth and elective subjects for this batch 
+
+    Called by get_br_el_sub_name_list_helper for every roll number in the dep.
+    """
+    grade_list = ['EX', 'A', 'B', 'C', 'D', 'P', 'F', 'X']
     index = 0
     sem_found = False
     for line in content:
@@ -889,10 +893,27 @@ def get_br_el_sub_name_list(year, dep, sem_num, br_list, el_list, content = ''):
                 currentLine = content[index + 6]
                 matchObj = re.match(r'<td align="center">(.*)</td>', currentLine, re.M|re.I)
                 sub_type = str(matchObj.group(1))
-                if sub_type.find('Elective') != -1 and sub_name not in el_list:
-                    el_list.append(sub_name)
-                elif (sub_type.find('Breadth') != -1 or sub_type.find('HSS') != -1) and sub_name not in br_list:
-                    br_list.append(sub_name) 
+                currentLine = content[index + 5]
+                matchObj = re.match(r'<td align="center">(.*?)<(.+)', currentLine, re.M|re.I)
+                sub_grade = str(matchObj.group(1))
+                if sub_type.find('Elective') != -1:
+                    try:
+                        el_dict[sub_name]
+                        el_dict[sub_name][sub_grade] += 1
+                    except KeyError:
+                        el_dict[sub_name] = {}
+                        for item in grade_list:
+                            el_dict[sub_name][item] = 0
+                        el_dict[sub_name][sub_grade] += 1
+                elif sub_type.find('Breadth') != -1 or sub_type.find('HSS') != -1:
+                    try:
+                        br_dict[sub_name]
+                        br_dict[sub_name][sub_grade] += 1
+                    except KeyError:
+                        br_dict[sub_name] = {}
+                        for item in grade_list:
+                            br_dict[sub_name][item] = 0
+                        br_dict[sub_name][sub_grade] += 1
         elif line.find("<tr><td bgcolor=\"#FFF3FF\" colspan=\"2\"><h3 align=\"center\">Semester no:") != -1:
             matchObj = re.match(r'<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: ([1-9]).*', line, re.M|re.I)
             if matchObj:
@@ -910,39 +931,32 @@ def get_br_and_elective_grade_list(dep, sem_num):
     """ 
     year = get_prev_year(int(sem_num))
     combined_list = get_br_el_sub_name_list_helper(year, dep, sem_num)
-    grade_dict = {}
-    for item in combined_list[0]:
-        # List corresponds to Ex, A, B, C, D, P, F, X
-        grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
     if len(combined_list[0]) > 0:
-        gen_depth_sub_grade_list(year, dep, is_msc_dep(dep), grade_dict)
+        grade_dict = combined_list[0]
         print '\n\nPrevious year grade list of BREADTH subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
         table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
         table.align = 'l'
         for item in grade_dict:
-            table.add_row([item.replace("&amp;", "&"), grade_dict[item][0],  grade_dict[item][1], grade_dict[item][2], grade_dict[item][3],
-                grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
+            table.add_row([item.replace("&amp;", "&"), grade_dict[item]['EX'],  grade_dict[item]['A'], grade_dict[item]['B'], grade_dict[item]['C'],
+                grade_dict[item]['D'], grade_dict[item]['P'],  grade_dict[item]['F'], grade_dict[item]['X']])
         print table
         print ''
         grade_dict.clear()
     else:
         print '\n\nNo Breadth Subjects found for this semester.\n'
-    for item in combined_list[1]:
-        # List corresponds to Ex, A, B, C, D, P, F, X
-        grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
     if len(combined_list[1]) > 0:
-        gen_depth_sub_grade_list(year, dep, is_msc_dep(dep), grade_dict)
-        print '\nPrevious year grade list of ELECTIVE subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
+        grade_dict = combined_list[1]
+        print '\n\nPrevious year grade list of ELECTIVE subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
         table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
         table.align = 'l'
         for item in grade_dict:
-            table.add_row([item.replace("&amp;", "&"), grade_dict[item][0],  grade_dict[item][1], grade_dict[item][2], grade_dict[item][3],
-                grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
+            table.add_row([item.replace("&amp;", "&"), grade_dict[item]['EX'],  grade_dict[item]['A'], grade_dict[item]['B'], grade_dict[item]['C'],
+                grade_dict[item]['D'], grade_dict[item]['P'],  grade_dict[item]['F'], grade_dict[item]['X']])
         print table
         print ''
+        grade_dict.clear()
     else:
         print '\n\nNo Electives found for this semester.\n'
-
     
 
 def find_sub_most_x_f(grade_dict, choice):
