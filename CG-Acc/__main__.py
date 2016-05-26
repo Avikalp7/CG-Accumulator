@@ -162,7 +162,7 @@ def check_results_availability():
     for line in content:
         # VULNERABLE
         # Change to other HTML conditions
-        if line.find("Students Performance will be enabled after SENATE Approval") != -1:
+        if line.find("Students Performance will be enabled after SENATE Approval") != -1 or line.find("HTTP Status 500") != -1:
             return False
     return True
 
@@ -185,18 +185,18 @@ def check_roll_num_validity(user_roll_num):
             if 20000 < num < 20100:
                 url = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + user_roll_num
                 content = connect('Output.txt', url)
-                return len(content) > 50
+                return [len(content) > 50, content]
             else:
-                return False
+                return [False, '']
         # Else for other deps, last five digits should be in 10000 or 30000 series
         elif (10000 < num < 10100) or (30000 < num < 30100):
             url = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + user_roll_num
             content = connect('Output.txt', url)
-            return len(content) > 50
+            return [len(content) > 50, content]
         else:
-            return False
+            return [False, '']
     else:
-        return False
+        return [False, '']
 
 
 def take_roll_num():
@@ -204,9 +204,13 @@ def take_roll_num():
     # Taking roll_num input
     roll_num = raw_input("Enter Roll Number :  ")
     # Converting user inp to upper (14cs10008 - 14CS10008) and checking validity
-    while not check_roll_num_validity(roll_num.upper()):
-        roll_num = raw_input("Please enter valid Roll Number :  ")
-    return roll_num.upper()
+    while True:
+        flag, content = check_roll_num_validity(roll_num.upper())
+        if not flag:
+            roll_num = raw_input("Please enter valid Roll Number :  ")
+        else:
+            break
+    return [roll_num.upper(), content]
 
 
 def take_year():
@@ -603,6 +607,8 @@ def find_dep_rank_list_SG(year, dep, msc_dep_bool):
             bad_count = 0
             student_count += 1
             name = find_name(rollno, content)
+            print 'Processing', 
+            print rollno, name
             # Handling duplicate names. Will label more than 2 dups in same fashion 
             try:
                 dep_dict[name]
@@ -1058,11 +1064,11 @@ def take_main_choice():
             sub_choice = raw_input("Please enter valid sub choice again (1 or 2) :  ")
         # If asked for an individual
         if sub_choice == '1':
-            user_roll_num = take_roll_num()
-            name = find_name(user_roll_num)
+            user_roll_num, content = take_roll_num()
+            name = find_name(user_roll_num, content)
             # Individual CGPA asked
             if choice == '1.1':
-                user_cg = find_cg_individual(user_roll_num)
+                user_cg = find_cg_individual(user_roll_num, content)
                 # Checking that records exist for this roll num
                 if user_cg != -1:
                     print "\nCGPA for " + name + " is : " + str(user_cg) + "\n"
@@ -1070,7 +1076,7 @@ def take_main_choice():
                     print "\nRecords don't exist for " + user_roll_num + ". Please check the validity of the roll number you have entered.\n"
             # Individual SGPA list
             elif choice == '1.2':
-                sg_list = find_sg_list_individual(user_roll_num)
+                sg_list = find_sg_list_individual(user_roll_num, content)
                 num_semesters = len(sg_list)
                 if num_semesters > 0:
                     print '\nSGPA list for ' + name + ' : '
@@ -1083,7 +1089,7 @@ def take_main_choice():
                 print ''
             # Individual - Most recent SGPA
             elif choice == '1.3':
-                sg = find_recent_sg_individual(user_roll_num)
+                sg = find_recent_sg_individual(user_roll_num, content)
                 if sg != -1:
                     print '\nMost recent SGPA for ' + name + ' is : ' + str(sg)
                 else:
@@ -1111,8 +1117,8 @@ def take_main_choice():
         while sub_choice not in ['1', '2']:
             sub_choice = raw_input("Please enter valid sub choice again (1 or 2) :  ")
         if sub_choice == '1':
-            user_roll_num = take_roll_num()
-            name = find_name(user_roll_num)
+            user_roll_num, content = take_roll_num()
+            name = find_name(user_roll_num, content)
             print '\nCrunching Data... This may take a couple of minutes or more depending on your OS and internet connection.\n'
             # Individual Dep rank based on CG
             if choice == '2.1':
@@ -1138,13 +1144,13 @@ def take_main_choice():
             elif choice == '2.2':
                 find_dep_rank_list_SG(year, dep, msc_dep_bool)
     elif choice in ['4.1', '4.2']:
-        user_roll_num = take_roll_num()
+        user_roll_num, content = take_roll_num() 
         if choice == '4.1':
             individual_full_performance(user_roll_num)
             print '\nThe result should have opened in your default web browser.\n'
         elif choice == '4.2':
             sem_num = take_sem_num()
-            individual_semester_display(user_roll_num, sem_num)
+            individual_semester_display(user_roll_num, sem_num, content)
     elif choice in ['3.0','3.1', '3.2', '3.3', '3.4']:
         dep = take_dep()
         sem_num = take_sem_num()
