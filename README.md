@@ -70,6 +70,9 @@ $ sudo pip install --upgrade virtualenv
 3. Use `python -m CG-Acc` command to run the application.
 
 
-#####Working (Concise)
+####Working (Concise)
 ######Main Menu
+![ScreenShot](Screenshots/Main_Menu.png)
+
+######Semester Summariser
 
