@@ -68,3 +68,8 @@ $ sudo pip install --upgrade virtualenv
 2. Enter `pip install CG-Acc` command to download this software
 
 3. Use `python -m CG-Acc` command to run the application.
+
+
+#####Working (Concise)
+######Main Menu
+
