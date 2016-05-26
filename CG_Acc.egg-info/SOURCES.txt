@@ -1,0 +1,10 @@
+MANIFEST.in
+setup.cfg
+setup.py
+CG-Acc/__init__.py
+CG-Acc/__main__.py
+CG_Acc.egg-info/PKG-INFO
+CG_Acc.egg-info/SOURCES.txt
+CG_Acc.egg-info/dependency_links.txt
+CG_Acc.egg-info/requires.txt
+CG_Acc.egg-info/top_level.txt

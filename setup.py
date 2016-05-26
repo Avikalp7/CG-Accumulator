@@ -2,13 +2,13 @@ from setuptools import setup
 setup(
   name = 'CG-Acc',
   packages = ['CG-Acc'], # this must be the same as the name above
-  version = '0.0.1',
-  description = 'Alpha version for CG-Acc',
+  version = '1.0.1',
+  description = 'A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.',
   author = 'Avikalp Srivastava',
   author_email = 'avikalp22@gmail.com',
   url = 'https://github.com/Avikalp7/CG-Accumulator', 
   # download_url = 'https://github.com/Avikalp7/Golden-Shoe/tarball/0.1',
-  keywords = ['IIT', 'KGP', 'CGPA', 'CG-Acc', 'Avikalp', 'Avikalp Srivastava', 'CG-Accumulator'], 
+  keywords = ['IIT', 'KGP', 'CGPA', 'CG-Acc', 'Avikalp Srivastava', 'CG Accumulator', 'Python', 'CG Acc'], 
   
   license = 'MIT',
   
@@ -17,10 +17,10 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
-        'Intended Audience :: Developers',
+        'Intended Audience :: End Users/Desktop',
 
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',
@@ -30,5 +30,5 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
 
-    install_requires=['requests', 'bs4', 'prettytable'],
+    install_requires=['requests', 'bs4', 'prettytable', 'eventlet'],
 )

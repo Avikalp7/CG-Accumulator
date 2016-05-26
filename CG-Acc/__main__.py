@@ -71,14 +71,14 @@ import time
 # Usage : Timeout a request
 import eventlet
 eventlet.monkey_patch(socket = True)
-
+# Usage : Suppressing warnings on non HTTPS
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
 # Stores the version of the software
 # Used for Software Update, after matching latest version number available from http://cgaccumulator.blog.com/
-version = '0.0.1'
+version = '1.0.1'
 
 
 def check_for_update(content):
@@ -94,7 +94,8 @@ def check_for_update(content):
                 for nline in content:
                     mobj = re.match(r'<p>UPDATE INFO : (.*)</p>', nline, re.M|re.I)
                     if mobj:
-                        print "A new version of the software is available. Use 'pip install --upgrade CGAcc' command to get the latest version."
+                        print '\a'
+                        print "A new version of the software is available. Use 'pip install --upgrade CG-Acc' command to get the latest version."
                         print "Update Info : " + str(mobj.group(1))
                         time.sleep(1)
                         break
@@ -147,7 +148,8 @@ def connect(fname, url_to_scrape):
         if connect.counter >= 4:
             connect.counter = 0
             print '\a'
-            reconnect_choice = raw_input('\nYou don\'t seem to be having internet connectivity. Enter r to try again, x to exit :  ')
+            print '\nYou don\'t seem to be having internet connectivity | Connection with ERP performance page cannot be established.'
+            reconnect_choice = raw_input('Enter r to try again, x to exit :  ')
             while reconnect_choice not in ['r', 'x']:
                 reconnect_choice = raw_input('Invalid choice! Please enter r to try reconnecting again, or enter x to exit :  ')
             if reconnect_choice == 'r':
@@ -190,7 +192,7 @@ def check_roll_num_validity(user_roll_num):
     msc_dep_list = ["GG", "EX", "MA", "CY", "HS", "PH"]
     # Currently, software supports students with starting years as 2012, 2013, 2014, 2015
     # Requires Annual UPDATE
-    years = ["12","13","14","15"]
+    years = ["11","12","13","14","15"]
 
     # Check that first 2 chars are present in years, next 2 in departments, length is 9 and the last 5 chars correspond to an integer
     if user_roll_num[0:2] in years and user_roll_num[2:4] in departments and len(user_roll_num) == 9 and is_int(user_roll_num[4:9]):
@@ -222,7 +224,7 @@ def take_roll_num():
     while True:
         flag, content = check_roll_num_validity(roll_num.upper())
         if not flag:
-            roll_num = raw_input("Please enter valid Roll Number :  ")
+            roll_num = raw_input("Roll Number Invalid / Not currently supported. Please enter valid Roll Number :  ")
         else:
             break
     return [roll_num.upper(), content]
@@ -232,8 +234,8 @@ def take_year():
     """Take user input for batch start year, validate and return year. Return type : str"""
     # Currently, software supports students with starting years as 2012, 2013, 2014, 2015
     # UPDATE : Annual
-    years = ["12", "13", "14", "15"]
-    year = raw_input("Enter start year for the batch (Choices : 12, 13, 14, 15) :  ")
+    years = ["11","12", "13", "14", "15"]
+    year = raw_input("Enter start year for the batch (Choices : 11, 12, 13, 14, 15) :  ")
     while year not in years:
         year = raw_input("Please enter valid year :  ")
     return year
@@ -424,7 +426,7 @@ def find_recent_sg_or_sg_list_batch(year, dep, msc_dep_bool, choice = '0'):
     fname = 'Output.txt'
     table = None
     if choice == '0':
-        table = PrettyTable(['Roll Num', 'Name', 'SGPA List'])
+        table = PrettyTable(['Roll Num', 'Name', 'SGPA List (Starts from most recent)'])
     elif choice == '1':
         table = PrettyTable(['Roll Num', 'Name', 'Recent SGPA'])
     while True:
@@ -674,11 +676,6 @@ def get_depth_sub_name_list(year, dep, sem_num, content = ''):
       url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + str(user_roll_num)
       fname = "Output.txt"
       content = connect(fname, url_to_scrape)
-    # EXCLUDE
-    # fname = 'divyansh.html'
-    # with open(fname) as f:
-    #     content = f.readlines()
-    # END EXCLUDE
     index = 0
     sem_found = False
     for line in content:
@@ -768,7 +765,7 @@ def gen_depth_sub_grade_list(year, dep, msc_dep_bool, sub_dict):
             last5 = 30000
         if bad_count >= 5 and (msc_dep_bool or last5 > 30000):
             print ''
-            return ##################################
+            return 
 
 
 def find_depth_sub_grade_list(dep, sem_num, msc_dep_bool, print_table = 'False'):
@@ -778,15 +775,19 @@ def find_depth_sub_grade_list(dep, sem_num, msc_dep_bool, print_table = 'False')
     Depth Subjects Grade List
     """
     prev_year = get_prev_year(int(sem_num))
-    depth_sub_name_list = get_depth_sub_name_list(prev_year, dep, sem_num)
-    grade_dict = {}
-    for item in depth_sub_name_list:
-        # List corresponds to Ex, A, B, C, D, P, F, X
-        grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
-    gen_depth_sub_grade_list(prev_year, dep, is_msc_dep(dep), grade_dict)
+    # depth_sub_name_list = get_depth_sub_name_list(prev_year, dep, sem_num)
+    # grade_dict = {}
+    # for item in depth_sub_name_list:
+    #     # List corresponds to Ex, A, B, C, D, P, F, X
+    #     grade_dict[item] = [0, 0, 0, 0, 0, 0, 0, 0]
+    # gen_depth_sub_grade_list(prev_year, dep, is_msc_dep(dep), grade_dict)
+    dep_dict = {}
+    dict_list = get_br_el_sub_name_list_helper(prev_year, dep, sem_num, dep_dict)
+    dict_list.append(dep_dict)
     if not print_table:
-        return grade_dict
+        return dict_list
     # Else :
+    grade_dict = dict_list[2]
     print '\n\nPrevious year grade list of depth subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
     table = PrettyTable(['Sub Name', 'Ex', 'A', 'B', 'C', 'D', 'P', 'F', 'X'])
     table.align = 'l'
@@ -795,7 +796,7 @@ def find_depth_sub_grade_list(dep, sem_num, msc_dep_bool, print_table = 'False')
             grade_dict[item][4], grade_dict[item][5],  grade_dict[item][6], grade_dict[item][7]])
     print table
     print ''
-    return grade_dict
+    return dict_list
 
 
 def find_sum(alist):
@@ -826,7 +827,7 @@ def find_subjects_by_difficulty_level(grade_dict):
         table.add_row([item[0].replace("&amp;", "&"), item[1]])
     print table
 
-def get_br_el_sub_name_list_helper(year, dep, sem_num):
+def get_br_el_sub_name_list_helper(year, dep, sem_num, dep_dict = {}):
     """ Function to get breadth and elective subjects taken by previous yr students of the given batch for the given sem_num
 
     Traverses all roll numbers of the batch to get the exhaustive list.
@@ -845,7 +846,7 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
     bad_count = 0
     # Sum of CG's for this batch. Used for calculating average.
     # Initialising Table
-    while True: ######################################### 
+    while True:  
         # Moving to next student
         roll_count += 1
         rollno = str(year) + str(dep) + str(roll_count)
@@ -867,10 +868,9 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
             student_count += 1
             print 'Processing', 
             print rollno
-            get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, content)
+            get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, dep_dict, content)
         # If the subject is not Msc, then we make a transition to dual degree students
         if bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
-            # break #######################################################################
             roll_count = 30000
         # Conditions for ending, self explanatory.
         elif bad_count >= 5 and ((not msc_dep_bool and roll_count > 30000) or msc_dep_bool):
@@ -878,12 +878,13 @@ def get_br_el_sub_name_list_helper(year, dep, sem_num):
     return [br_dict, el_dict]
 
 
-def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, content = ''):
+def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, dep_dict, content = ''):
     """ Return list of name of breadth and elective subjects for this batch 
 
     Called by get_br_el_sub_name_list_helper for every roll number in the dep.
     """
     grade_list = ['EX', 'A', 'B', 'C', 'D', 'P', 'F', 'X']
+    sub_grade_dict = {'EX' : 0, 'A' : 1, 'B' : 2, 'C' : 3, 'D' : 4, 'P' : 5, 'F' : 6, 'X' : 7}
     index = 0
     sem_found = False
     for line in content:
@@ -916,6 +917,15 @@ def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, content = ''):
                         for item in grade_list:
                             br_dict[sub_name][item] = 0
                         br_dict[sub_name][sub_grade] += 1
+                if sub_type.find('Depth') != -1:
+                    try:
+                        dep_dict[sub_name]
+                        dep_dict[sub_name][sub_grade_dict[sub_grade]] += 1
+                    except KeyError:
+                        dep_dict[sub_name] = {}
+                        for item in grade_list:
+                            dep_dict[sub_name] = [0] * 8
+                        dep_dict[sub_name][sub_grade_dict[sub_grade]] += 1
         elif line.find("<tr><td bgcolor=\"#FFF3FF\" colspan=\"2\"><h3 align=\"center\">Semester no:") != -1:
             matchObj = re.match(r'<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: ([1-9]).*', line, re.M|re.I)
             if matchObj:
@@ -926,13 +936,16 @@ def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, content = ''):
         index += 1
 
 
-def get_br_and_elective_grade_list(dep, sem_num):
+def get_br_and_elective_grade_list(dep, sem_num, dict_filled_bool, br_dict = {}, el_dict = {}):
     """ Print grade list for all electives and breadth fr prev yr batch for given sem_num
 
     Calls get_br_el_sub_name_list_helper to get names of all such subjects and generates grade lists
     """ 
     year = get_prev_year(int(sem_num))
-    combined_list = get_br_el_sub_name_list_helper(year, dep, sem_num)
+    if dict_filled_bool:
+        combined_list = [br_dict, el_dict]
+    else:
+        combined_list = get_br_el_sub_name_list_helper(year, dep, sem_num)
     if len(combined_list[0]) > 0:
         grade_dict = combined_list[0]
         print '\n\nPrevious year grade list of BREADTH subjects for semester number ' + str(sem_num) + ' for the ' + dep + ' department :'
@@ -979,12 +992,12 @@ def find_sub_most_x_f(grade_dict, choice):
                 sub_list.append(item.replace("&amp;", "&"))
     if choice == 1:
         if len(sub_list) > 0:
-            print '\nSubject(s) with most Deregistrations : ',
+            print '\nDepth Subject(s) with most Deregistrations : ',
             for item in sub_list:
                 print item,
             print '\nNumber of deregistrations : ' + str(maxim)
         else:
-            print '\nNo subjects with Deregistrations found :D'
+            print '\nNo depth subjects with Deregistrations found :D'
     elif choice == 2:
         if len(sub_list) > 0:
             print '\nSubject(s) with most F grades : ',
@@ -992,7 +1005,7 @@ def find_sub_most_x_f(grade_dict, choice):
                 print item,
             print '\nNumber of F grades : ' + str(maxim)
         else:
-            print '\nNo subjects with F grades found :D'
+            print '\nNo depth subjects with F grades found :D'
     print ''
 
 
@@ -1006,7 +1019,7 @@ def find_sub_most_a_ex(grade_dict):
     for item in grade_dict:
         if grade_dict[item][0] + grade_dict[item][1] == maxim:
             list_sub.append(item)
-    print '\nSubject(s) with most A\'s + Ex\'s : ',
+    print 'Depth Subject(s) with most A\'s + Ex\'s : ',
     for item in list_sub:
         print item,
     print ''
@@ -1189,11 +1202,11 @@ def take_main_choice():
                     print '\nDepartment Rank for ' + name + ' is ' + str(dep_rank[0]) + ' out of ' + str(dep_rank[1]) + ' students.\n'
             # Individual Dep rank based on recent SGPA
             elif choice == '2.2':
-                find_dep_rank_individual(user_roll_num, '2')
+                dep_rank, student_count = find_dep_rank_individual(user_roll_num, '2')
                 if dep_rank == -1:
                     print "\nRecords don't exist for " + user_roll_num + ". Please check the validity of the roll number you have entered.\n"
                 else:
-                    print '\nDepartment Rank for ' + name + ' on basis of most recent SGPA is ' + str(dep_rank[0]) + ' out of ' + str(dep_rank[1]) + ' students.\n'
+                    print '\nDepartment Rank for ' + name + ' on basis of most recent SGPA is ' + str(dep_rank) + ' out of ' + str(student_count) + ' students.\n'
         elif sub_choice == '2':
             year = take_year()
             dep = take_dep()
@@ -1218,21 +1231,24 @@ def take_main_choice():
         if choice == '3.1':
             find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), True)
         elif choice == '3.2':
-            get_br_and_elective_grade_list(dep, sem_num)
+            get_br_and_elective_grade_list(dep, sem_num, False)
         elif choice == '3.3':
-            grade_dict = find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), False)
+            dict_list = find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), False)
+            grade_dict = dict_list[2]
             find_subjects_by_difficulty_level(grade_dict)
         elif choice == '3.4':
-            grade_dict = find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), False)
+            dict_list = find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), False)
+            grade_dict = dict_list[2]
             find_sub_most_x_f(grade_dict, 2)
             find_sub_most_x_f(grade_dict, 1)
         elif choice == '3.0':
-            if sem_num == 3:
-                print '\nSUMMARY OF 3RD SEMESTER FOR THE ' + dep + ' DEPARTMENT BASED ON PREVIOUS YEAR'
-            else:
-                print '\nSUMMARY OF ' + str(sem_num) +'TH SEMESTER FOR THE ' + dep +' DEPARTMENT BASED ON PREVIOUS YEAR'
-            grade_dict = find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), True)
-            get_br_and_elective_grade_list(dep, sem_num)
+            # if sem_num == 3:
+            #     print '\nSUMMARY OF 3RD SEMESTER FOR THE ' + dep + ' DEPARTMENT BASED ON PREVIOUS YEAR'
+            # else:
+            #     print '\nSUMMARY OF ' + str(sem_num) +'TH SEMESTER FOR THE ' + dep +' DEPARTMENT BASED ON PREVIOUS YEAR'
+            dict_list = find_depth_sub_grade_list(dep, sem_num, is_msc_dep(dep), True)
+            grade_dict = dict_list[2]
+            get_br_and_elective_grade_list(dep, sem_num, True, dict_list[0], dict_list[1])
             find_subjects_by_difficulty_level(grade_dict)
             find_sub_most_x_f(grade_dict, 2)
             find_sub_most_x_f(grade_dict, 1)
@@ -1258,12 +1274,12 @@ if __name__ == "__main__":
     content = connect("Output.txt", 'http://cgaccumulator.blog.com/')
     # Checking availability of results.
     if not check_results_availability():
-        print "\nSorry. Right now the results are not available due to ongoing upadations in the institute database."   ################
+        print "\nSorry. Right now the results are not available due to ongoing upadations in the institute database."  
         key = raw_input("Press Enter to Exit.")
         exit(0)
     print '\nConnected!'
     # Checking for latest version
-    check_for_update(content)  ########################################################################################################
+    check_for_update(content)  
     # Bool var storing user's choice to return to / display main menu.
     # Initially set as True, to display menu on start of program.
     main_menu_status = True

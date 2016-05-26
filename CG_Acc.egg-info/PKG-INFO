@@ -1,0 +1,15 @@
+Metadata-Version: 1.1
+Name: CG-Acc
+Version: 1.0.1
+Summary: A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
+Home-page: https://github.com/Avikalp7/CG-Accumulator
+Author: Avikalp Srivastava
+Author-email: avikalp22@gmail.com
+License: MIT
+Description: UNKNOWN
+Keywords: IIT,KGP,CGPA,CG-Acc,Avikalp Srivastava,CG Accumulator,Python,CG Acc
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 2.7
