@@ -43,7 +43,7 @@ Developed by : Avikalp Srivastava
 # TODO's present in code
 
 # Dependencies
-# [requests, bs4, prettytable]
+# [requests, bs4, prettytable, eventlet]
 
 # Software Requirements
 # [Python 2.7, pip] 
@@ -56,7 +56,7 @@ import operator
 import webbrowser
 # Usage : Connect to a link
 import requests 
-# Usage : 
+# Usage : scraping ERP performance page
 from bs4 import BeautifulSoup
 # Usage : To display data in tables
 from prettytable import PrettyTable
