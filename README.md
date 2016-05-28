@@ -40,8 +40,9 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 2. Make sure you have pip installed. Open cmd and enter the 'pip' command.
     If the 'pip is not recognized as an internal or external command' error shows up, download from this [link](https://drive.google.com/file/d/0B0uazFxiiqNYNTFWZ1doV2xRUDA/view?usp=sharing)
     Go the folder where the get-pip.py is downloaded and enter 'cmd' (without quotes) in the address bar.
-    Enter the 'python get-pip.py' command in the cmd that pops up.
-    Enter the 'setx PATH "%PATH%;C:\Python27\Scripts"' command and restart the command prompt.
+    Enter the `python get-pip.py` command in the cmd that pops up.
+
+    Enter the `setx PATH "%PATH%;C:\Python27\Scripts"` command and restart the command prompt.
     
 3. Enter `pip install CG-Acc` command to download this software
 
