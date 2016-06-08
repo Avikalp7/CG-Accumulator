@@ -34,19 +34,22 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 ## Installation
 
 #####Windows
-1. Make sure you have Python 2.7 installed. Open cmd and enter the 'python' (without quotes) command.
-    If the 'python is not recognised as an internal or external command' error shows up, go to the [python website](https://www.python.org/downloads/), download Python 2.7.11 and follow the steps [here](https://youtu.be/gD4eulxGNok?t=1m9s).
-    
-2. Make sure you have pip installed. Open cmd and enter the 'pip' command.
+
+###### If Python not Installed 
+Download the zip file (4 MB) from [here](https://goo.gl/IJY0O7), extract and run CG-Acc.exe.
+
+###### If Python Installed 
+
+1. Make sure you have pip installed. Open cmd and enter the 'pip' command.
     If the 'pip is not recognized as an internal or external command' error shows up, download from this [link](https://drive.google.com/file/d/0B0uazFxiiqNYNTFWZ1doV2xRUDA/view?usp=sharing)
     Go the folder where the get-pip.py is downloaded and enter 'cmd' (without quotes) in the address bar.
     Enter the `python get-pip.py` command in the cmd that pops up.
 
     Enter the `setx PATH "%PATH%;C:\Python27\Scripts"` command and restart the command prompt.
     
-3. Enter `pip install CG-Acc` command to download this software
+2. Enter `pip install CG-Acc` command to download this software
 
-4. Use `python -m CG-Acc` command to run the application.
+3. Use `python -m CG-Acc` command to run the application.
 
 #####Linux
 1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
