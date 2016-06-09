@@ -34,17 +34,22 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 ## Installation
 
 #####Windows
-1. Make sure you have Python 2.7 installed. Open cmd and enter the 'python' (without quotes) command.
-    If the 'python is not recognised as an internal or external command' error shows up, go to the [python website](https://www.python.org/downloads/), download Python 2.7.11 and follow the steps [here](https://youtu.be/gD4eulxGNok?t=1m9s).
-    
-2. Make sure you have pip installed. Open cmd and enter the 'pip' command.
+
+###### If Python not Installed 
+Download the zip file (4 MB) from [here](https://goo.gl/IJY0O7), extract and run CG-Acc.exe.
+
+###### If Python Installed 
+
+1. Make sure you have pip installed. Open cmd and enter the 'pip' command.
     If the 'pip is not recognized as an internal or external command' error shows up, download from this [link](https://drive.google.com/file/d/0B0uazFxiiqNYNTFWZ1doV2xRUDA/view?usp=sharing)
     Go the folder where the get-pip.py is downloaded and enter 'cmd' (without quotes) in the address bar.
-    Enter the 'python get-pip.py' command in the cmd.
-    
-3. Enter `pip install CG-Acc` command to download this software
+    Enter the `python get-pip.py` command in the cmd that pops up.
 
-4. Use `python -m CG-Acc` command to run the application.
+    Enter the `setx PATH "%PATH%;C:\Python27\Scripts"` command and restart the command prompt.
+    
+2. Enter `pip install CG-Acc` command to download this software
+
+3. Use `python -m CG-Acc` command to run the application.
 
 #####Linux
 1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
@@ -70,6 +75,50 @@ $ sudo pip install --upgrade virtualenv
 3. Use `python -m CG-Acc` command to run the application.
 
 
-#####Working (Concise)
+
+###Working (Concise)
 ######Main Menu
+![ScreenShot](Screenshots/1_main_menu.png)
+
+
+######Semester Summariser
+Function - Summarises important aspects of a semester acc. to prevoius year grades.
+
+* Grade List for All Subjects
+
+![ScreenShot](Screenshots/2_grade_list.png)
+
+* All Electives taken up (with grade list), calculation of difficulty score (relative)
+
+![ScreenShot](Screenshots/3_elective_diff_score.png)
+
+(PS : only 1 elective subject was available to this department for the 5th semester.)
+
+
+* Other useful information
+
+![ScreenShot](Screenshots/4_other_sem_info.png)
+
+
+######Department Ranks
+
+* Choice entered for department rank list based on most recent results
+
+![ScreenShot](Screenshots/5_dep_rank_choice.png)
+
+* Department Rank List for Entire Batch
+
+![ScreenShot](Screenshots/6_dep_rank_list.png)
+
+* Individual Dep Rank based on recent results
+
+![ScreenShot](Screenshots/7_dep_rank_indiv.png)
+
+* Individual Dep Rank based on CGPA
+
+![ScreenShot](Screenshots/8_dep_rank_CG.png)
+
+
+
+
 

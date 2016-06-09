@@ -50,7 +50,7 @@ import operator
 import webbrowser
 # Usage : Connect to a link
 import requests 
-# Usage : 
+# Usage : scraping ERP performance page
 from bs4 import BeautifulSoup
 # Usage : To display data in tables
 from prettytable import PrettyTable
