@@ -101,10 +101,13 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ![ScreenShot](Screenshots/5_dep_rank_choice.png)
 
-* Department Rank vs Recent SGPA for Entire Batch
+* Department Rank vs Recent SGPA for your Batch
 
 ![ScreenShot](Screenshots/9_dep_SG.png)
 
+* Department Rank vs CGPA for your Batch
+
+![ScreenShot](Screenshots/11_dep_CG.png)
 
 
 
