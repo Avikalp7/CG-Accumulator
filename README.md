@@ -20,23 +20,18 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
     - CGPA based evaluation is also available.
     - Generating a department rank list for the entire batch on above parameters.
  
-3. ######RECENT SGPA LISTS 
-    - Helps to generate the SGPA list for the entire batch based on the most recent results.
- 
-4. ######OTHER FEATURES
-    - Generate CGPA list for an entire batch.
-    - Generate entire SGPA history for a batch / individual. Data from seniors helpful in identifying SGPA pitfalls.
-    - Get individual performance for only a particular semester
-    - Get performance link to a roll number without the birth date parameter.
+3. ######OTHER FEATURES
     - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
 
+######Privacy Statement :
+This software does not reveal any data such as SGPA / CGPA / Name / other grade related details for any student. The sole aim is to collect data and chalk out useful results and deductions for the benifit of the students. 
 
 ## Installation
 
 #####Windows
 
 ###### If Python not Installed 
-Download the zip file (4 MB) from [here](https://goo.gl/IJY0O7), extract and run CG-Acc.exe.
+Download the zip file (4 MB) from [here](https://goo.gl/RO8JKs), extract and run CG-Acc.exe.
 
 ###### If Python Installed 
 
@@ -47,7 +42,7 @@ Download the zip file (4 MB) from [here](https://goo.gl/IJY0O7), extract and run
 
     Enter the `setx PATH "%PATH%;C:\Python27\Scripts"` command and restart the command prompt.
     
-2. Enter `pip install CG-Acc` command to download this software
+2. Enter `pip install -i https://testpypi.python.org/pypi CG-Acc` command to download this software
 
 3. Use `python -m CG-Acc` command to run the application.
 
