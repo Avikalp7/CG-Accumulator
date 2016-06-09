@@ -73,7 +73,7 @@ $ sudo pip install --upgrade virtualenv
 
 ###Working (Concise)
 ######Main Menu
-![ScreenShot](Screenshots/1_main_menu.png)
+![ScreenShot](Screenshots/10_main_menu.png)
 
 
 ######Semester Summariser
@@ -101,17 +101,10 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ![ScreenShot](Screenshots/5_dep_rank_choice.png)
 
-* Department Rank List for Entire Batch
+* Department Rank vs Recent SGPA for Entire Batch
 
-![ScreenShot](Screenshots/6_dep_rank_list.png)
+![ScreenShot](Screenshots/9_dep_SG.png)
 
-* Individual Dep Rank based on recent results
-
-![ScreenShot](Screenshots/7_dep_rank_indiv.png)
-
-* Individual Dep Rank based on CGPA
-
-![ScreenShot](Screenshots/8_dep_rank_CG.png)
 
 
 
