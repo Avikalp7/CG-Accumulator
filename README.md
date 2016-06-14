@@ -91,7 +91,7 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ######Departmental SGPA/CGPA Pattern Detection
 
-* Average SGPA's and Variances for All Semesters of User's Department
+* Average SGPA's and Variances for All Semesters of User's Department (Here - HS)
 
 ![ScreenShot](Screenshots/13_all_sem_avg.PNG)
 
@@ -99,11 +99,11 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ![ScreenShot](Screenshots/12_next_sem_predict.PNG)
 
-* Prediction of User's Future SGPA's 
+* Prediction of User's Future SGPA's  (Here - User belongs to 14HS)
 
-![ScreenShot](Screenshots/14_sgpa_predict.PNG)
+![ScreenShot](Screenshots/14_sgpa_predict.PNG) 
 
-* Prediction of User's Future CGPA's
+* Prediction of User's Future CGPA's  (Here - User belongs to 15HS)
 
 ![ScreenShot](Screenshots/15_cgpa_predict.PNG)
 
