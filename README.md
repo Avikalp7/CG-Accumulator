@@ -6,7 +6,7 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 #####Windows
 
 ###### If Python not Installed 
-Download the zip file (4 MB) from [here](https://goo.gl/RO8JKs), extract and run CG-Acc.exe.
+Download the zip file (4 MB) from [here](https://goo.gl/dG48U5), extract and run CG-Acc.exe.
 
 ###### If Python and Pip Installed 
     
@@ -89,6 +89,25 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 ![ScreenShot](Screenshots/4_other_sem_info.png)
 
 
+######Departmental SGPA/CGPA Pattern Detection
+
+* Average SGPA's and Variances for All Semesters of User's Department
+
+![ScreenShot](Screenshots/13_all_sem_avg.png)
+
+* Prediction for User's SGPA in Next Semester along with Lower and Upper Bounds 
+
+![ScreenShot](Screenshots/12_next_sem_predict.png)
+
+* Prediction of User's Future SGPA's 
+
+![ScreenShot](Screenshots/14_sgpa_predict.png)
+
+* Prediction of User's Future CGPA's
+
+![ScreenShot](Screenshots/15_cgpa_predict.png)
+
+
 ######Department Ranks
 
 * Choice entered for department rank list based on most recent results
@@ -102,6 +121,7 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 * Department Rank vs CGPA for your Batch
 
 ![ScreenShot](Screenshots/11_dep_CG.png)
+
 
 
 
