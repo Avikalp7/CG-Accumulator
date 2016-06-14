@@ -72,7 +72,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # Stores the version of the software
 # Used for Software Update, after matching latest version number available from http://cgaccumulator.blog.com/
-version = '1.1'
+version = '1.1.1'
 
 
 def check_for_update(content):
