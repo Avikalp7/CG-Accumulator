@@ -1353,7 +1353,6 @@ def take_main_choice():
                 print 'Sorry, No Prediction Patterns for Semesters 8-10.\n'
             else:
                 batchNum = user_year - 1
-                print batchNum
                 print '\nAccumulating data from ' + str(batchNum) + dep + ' batch for analyis : '
                 user_sg = find_recent_sg_individual(user_roll_num, content)
                 total_SGPA, total_SGPA_sq = find_recent_sg_or_sg_list_batch(str(batchNum), dep, is_msc_dep(dep), '0', user_sem_num + 2)
