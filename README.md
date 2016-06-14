@@ -1,5 +1,43 @@
 # CG-Accumulator
 A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
+
+## Installation
+
+#####Windows
+
+###### If Python not Installed 
+Download the zip file (4 MB) from [here](https://goo.gl/RO8JKs), extract and run CG-Acc.exe.
+
+###### If Python and Pip Installed 
+    
+1. Enter `pip install CG-Acc` command to download this software
+
+2. Use `python -m CG-Acc` command to run the application.
+
+#####Linux
+1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
+
+######Debian
+```shell
+$ sudo apt-get install python2.7
+$ sudo apt-get install python-pip python-dev build-essential 
+$ sudo pip install --upgrade pip 
+$ sudo pip install --upgrade virtualenv 
+```
+
+######Fedora
+```shell
+$ sudo yum install python2.7 epel-release
+$ sudo yum install -y python-pip
+$ sudo pip install --upgrade pip 
+$ sudo pip install --upgrade virtualenv 
+```
+
+2. Enter `pip install CG-Acc` command to download this software
+
+3. Use `python -m CG-Acc` command to run the application.
+
+
  
 ### Important Features:
 1. ######SEMESTER SUMMARISER
@@ -25,50 +63,6 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 ######Privacy Statement :
 This software does not reveal any data such as SGPA / CGPA / Name / other grade related details for any student. The sole aim is to collect data and chalk out useful results and deductions for the benifit of the students. 
-
-## Installation
-
-#####Windows
-
-###### If Python not Installed 
-Download the zip file (4 MB) from [here](https://goo.gl/RO8JKs), extract and run CG-Acc.exe.
-
-###### If Python Installed 
-
-1. Make sure you have pip installed. Open cmd and enter the 'pip' command.
-    If the 'pip is not recognized as an internal or external command' error shows up, download from this [link](https://drive.google.com/file/d/0B0uazFxiiqNYNTFWZ1doV2xRUDA/view?usp=sharing)
-    Go the folder where the get-pip.py is downloaded and enter 'cmd' (without quotes) in the address bar.
-    Enter the `python get-pip.py` command in the cmd that pops up.
-
-    Enter the `setx PATH "%PATH%;C:\Python27\Scripts"` command and restart the command prompt.
-    
-2. Enter `pip install -i https://testpypi.python.org/pypi CG-Acc` command to download this software
-
-3. Use `python -m CG-Acc` command to run the application.
-
-#####Linux
-1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
-
-######Debian
-```shell
-$ sudo apt-get install python2.7
-$ sudo apt-get install python-pip python-dev build-essential 
-$ sudo pip install --upgrade pip 
-$ sudo pip install --upgrade virtualenv 
-```
-
-######Fedora
-```shell
-$ sudo yum install python2.7 epel-release
-$ sudo yum install -y python-pip
-$ sudo pip install --upgrade pip 
-$ sudo pip install --upgrade virtualenv 
-```
-
-2. Enter `pip install CG-Acc` command to download this software
-
-3. Use `python -m CG-Acc` command to run the application.
-
 
 
 ###Working (Concise)
@@ -101,10 +95,13 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ![ScreenShot](Screenshots/5_dep_rank_choice.png)
 
-* Department Rank vs Recent SGPA for Entire Batch
+* Department Rank vs Recent SGPA for your Batch
 
 ![ScreenShot](Screenshots/9_dep_SG.png)
 
+* Department Rank vs CGPA for your Batch
+
+![ScreenShot](Screenshots/11_dep_CG.png)
 
 
 
