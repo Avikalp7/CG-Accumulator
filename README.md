@@ -93,19 +93,19 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 * Average SGPA's and Variances for All Semesters of User's Department
 
-![ScreenShot](Screenshots/13_all_sem_avg.png)
+![ScreenShot](Screenshots/13_all_sem_avg.PNG)
 
 * Prediction for User's SGPA in Next Semester along with Lower and Upper Bounds 
 
-![ScreenShot](Screenshots/12_next_sem_predict.png)
+![ScreenShot](Screenshots/12_next_sem_predict.PNG)
 
 * Prediction of User's Future SGPA's 
 
-![ScreenShot](Screenshots/14_sgpa_predict.png)
+![ScreenShot](Screenshots/14_sgpa_predict.PNG)
 
 * Prediction of User's Future CGPA's
 
-![ScreenShot](Screenshots/15_cgpa_predict.png)
+![ScreenShot](Screenshots/15_cgpa_predict.PNG)
 
 
 ######Department Ranks
