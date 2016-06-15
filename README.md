@@ -3,7 +3,7 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 ## Installation
 
-#####Windows
+####Windows
 
 ###### If Python not Installed 
 Download the zip file (4 MB) from [here](https://goo.gl/dG48U5), extract and run CG-Acc.exe.
@@ -14,7 +14,9 @@ Download the zip file (4 MB) from [here](https://goo.gl/dG48U5), extract and run
 
 2. Use `python -m CG-Acc` command to run the application.
 
-#####Linux
+
+
+####Linux
 1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
 
 ######Debian
