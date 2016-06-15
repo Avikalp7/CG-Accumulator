@@ -3,10 +3,10 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 ## Installation
 
-#####Windows
+####Windows
 
 ###### If Python not Installed 
-Download the zip file (4 MB) from [here](https://goo.gl/RO8JKs), extract and run CG-Acc.exe.
+Download the zip file (4 MB) from [here](https://goo.gl/dG48U5), extract and run CG-Acc.exe.
 
 ###### If Python and Pip Installed 
     
@@ -14,7 +14,9 @@ Download the zip file (4 MB) from [here](https://goo.gl/RO8JKs), extract and run
 
 2. Use `python -m CG-Acc` command to run the application.
 
-#####Linux
+
+
+####Linux
 1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
 
 ######Debian
@@ -58,7 +60,13 @@ $ sudo pip install --upgrade virtualenv
     - CGPA based evaluation is also available.
     - Generating a department rank list for the entire batch on above parameters.
  
-3. ######OTHER FEATURES
+3. ######DEPARTMENTAL CGPA/SGPA PATTERN DETECTION
+    - View average SGPA's and variances for all semesters of your department
+    - Get a prediction of your SGPA for next semester based on previous year trends.
+    - Get a prediction of your SGPA for all upcoming semesters based on the batch that has completed all semesters
+    - Get a prediction of your CGPA for all upcoming semesters based on the batch that has completed all semesters
+
+4. ######OTHER FEATURES
     - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
 
 ######Privacy Statement :
@@ -89,6 +97,25 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 ![ScreenShot](Screenshots/4_other_sem_info.png)
 
 
+######Departmental SGPA/CGPA Pattern Detection
+
+* Average SGPA's and Variances for All Semesters of User's Department (Here - HS)
+
+![ScreenShot](Screenshots/13_all_sem_avg.PNG)
+
+* Prediction for User's SGPA in Next Semester along with Lower and Upper Bounds 
+
+![ScreenShot](Screenshots/12_next_sem_predict.PNG)
+
+* Prediction of User's Future SGPA's  (Here - User belongs to 14HS)
+
+![ScreenShot](Screenshots/14_sgpa_predict.PNG) 
+
+* Prediction of User's Future CGPA's  (Here - User belongs to 15HS)
+
+![ScreenShot](Screenshots/15_cgpa_predict.PNG)
+
+
 ######Department Ranks
 
 * Choice entered for department rank list based on most recent results
@@ -102,6 +129,7 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 * Department Rank vs CGPA for your Batch
 
 ![ScreenShot](Screenshots/11_dep_CG.png)
+
 
 
 
