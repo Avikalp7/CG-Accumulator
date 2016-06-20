@@ -66,7 +66,6 @@ $ sudo pip install --upgrade virtualenv
     - View average SGPA's and variances for all semesters of your department
     - Get a prediction of your SGPA for next semester based on previous year trends.
     - Get a prediction of your SGPA for all upcoming semesters based on the batch that has completed all semesters
-    - Get a prediction of your CGPA for all upcoming semesters based on the batch that has completed all semesters
 
 4. ######OTHER FEATURES
     - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
@@ -77,7 +76,7 @@ This software does not reveal any data such as SGPA / CGPA / Name / other grade 
 
 ###Working (Concise)
 ######Main Menu
-![ScreenShot](Screenshots/10_main_menu.png)
+![ScreenShot](Screenshots/16_main_menu.png)
 
 
 ######Semester Summariser
@@ -113,9 +112,6 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ![ScreenShot](Screenshots/14_sgpa_predict.PNG) 
 
-* Prediction of User's Future CGPA's  (Here - User belongs to 15HS)
-
-![ScreenShot](Screenshots/15_cgpa_predict.PNG)
 
 
 ######Department Ranks
