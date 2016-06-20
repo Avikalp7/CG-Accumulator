@@ -18,7 +18,7 @@ Important Features:
     - CGPA based evaluation is also available.
     - Generating a department rank list for the entire batch on above parameters.
 
-VERY IMP : This version is a high privacy version which includes a lot of feaatures cut down, and a lot of unused code.
+VERY IMP : This version is a high privacy version which includes a lot of features cut down, and a lot of unused code.
 
 Developed by : Avikalp Srivastava
 """
@@ -1193,7 +1193,7 @@ def take_main_choice():
     user_roll_num = '14CS10008'
     # Available choices from main table
     # 5 will be used for exiting
-    choices = ['1.0', '1.1', '1.2', '1.3', '1.4','2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3', '3.4', '4']
+    choices = ['1.0', '1.1', '1.2', '1.3', '1.4','2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3', '4']
     print "Enter your choice. To Exit, enter 4"
     print "Eg. \"1.0\" (without quotes) for Entire Semester Summariser Info"
     # Taking user input for choice
@@ -1268,7 +1268,7 @@ def take_main_choice():
             find_sub_most_x_f(grade_dict, 2)
             find_sub_most_x_f(grade_dict, 1)
             find_sub_most_a_ex(grade_dict)
-    elif choice in ['3.1', '3.2', '3.3', '3.4']:
+    elif choice in ['3.1', '3.2', '3.3']:
         if choice == '3.1':
             dep = take_dep()
             batchNum = find_senior_year()
@@ -1324,19 +1324,25 @@ def take_main_choice():
             else:
                 print '\nAccumulating data from ' + str(batchNum) + dep + ' batch for analyis : '
                 user_sg = find_recent_sg_individual(user_roll_num, content)
+                user_cg = find_cg_individual(user_roll_num, content)
                 total_SGPA, total_SGPA_sq = find_recent_sg_or_sg_list_batch(str(batchNum), dep, is_msc_dep(dep))
                 N = total_SGPA[8]
                 avg_SGPA = [x/float(N) for x in total_SGPA]
                 avg_sg = avg_SGPA[user_sem_num - 1]
+                user_sg = (user_sg + user_cg*(user_sem_num)) / float(user_sem_num + 1)
                 if user_sg > avg_sg:
+                    diff_factor = 1 - min((user_sg - avg_sg)/2.5, 0.9)
                     pos_factor =  max((user_sg - avg_sg)/0.30, 0.5)
                     neg_factor = max((user_sg - avg_sg)/0.35, 0.5)
                 else:
+                    diff_factor = 1 
                     neg_factor = max((avg_sg - user_sg)/0.30, 0.5)
                     pos_factor = max((avg_sg - user_sg)/0.35, 0.5)
                 table = PrettyTable(['Semester Number', 'Predicted SGPA', 'Predicted Lowest Point', 'Predicted Highest Point'])
                 for i in range(user_sem_num, 8):
                     diff = avg_SGPA[i] - avg_sg
+                    if diff > 0:
+                        diff = diff*diff_factor
                     variance = (float(total_SGPA_sq[i]) - total_SGPA[i]**2/float(N)) / float(N)
                     sdpos = variance/float(pos_factor)
                     sdneg = variance/float(neg_factor)
@@ -1360,12 +1366,16 @@ def take_main_choice():
                 avg_SGPA = [x/float(N) for x in total_SGPA]
                 avg_sg = avg_SGPA[user_sem_num - 1]
                 if user_sg > avg_sg:
+                    diff_factor = 1 - min((user_sg - avg_sg)/2.5, 0.9)
                     pos_factor =  max((user_sg - avg_sg)/0.30, 0.5)
                     neg_factor = max((user_sg - avg_sg)/0.35, 0.5)
                 else:
+                    diff_factor = 1
                     neg_factor = max((avg_sg - user_sg)/0.30, 0.5)
                     pos_factor = max((avg_sg - user_sg)/0.35, 0.5)
                 diff = avg_SGPA[user_sem_num] - avg_sg
+                if diff > 0:
+                    diff = diff*diff_factor
                 variance = (float(total_SGPA_sq[user_sem_num]) - total_SGPA[user_sem_num]**2/float(N)) / float(N)
                 sdpos = variance/float(pos_factor)
                 sdneg = variance/float(neg_factor)
@@ -1377,6 +1387,7 @@ def take_main_choice():
                 print 'Predicted Upper Bound : ',
                 print min(round(user_sg + diff + sdpos/float(2), 2), 10.0)
                 print '\n'
+                print 'PS. This data is based on more recent results than those computed in choice 3.2 and hence may vary.\n'
     elif choice == '4':
         print 'Exiting...'
         exit(0)
@@ -1413,7 +1424,7 @@ if __name__ == "__main__":
         table.add_row(['1.1 Depth Subjects Grade List (Prev Yr.)', '2.1 Individual Department Rank Based on CGPA', '3.1 Average SGPA & Variance for All Semesters'])
         table.add_row(['1.2 Breadth & Elective Subjects Grade List (Prev yr.)','2.2 Individual Department Rank Based on Recent Results/SGPA', '3.2 Next Semester SGPA Predictor'])
         table.add_row(['1.3 Depth Subjects by Difficulty Level', '2.3 D.R vs CGPA Distribution for a Batch', '3.3 SGPA Predictor - All Semesters'])
-        table.add_row(['1.4 Depth Subject with most F and Deregistrations', '2.4 D.R vs Recent SGPA Distribution for a Batch', '3.4 CGPA Predictor - All Semesters'])
+        table.add_row(['1.4 Depth Subject with most F and Deregistrations', '2.4 D.R vs Recent SGPA Distribution for a Batch', ''])
         table.align = 'l'
         print table
         main_menu_status = take_main_choice()
