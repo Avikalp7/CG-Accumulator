@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name = 'CG-Acc',
   packages = ['CG-Acc'], # this must be the same as the name above
-  version = '1.1.1',
+  version = '1.1.2',
   description = 'A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.',
   author = 'Avikalp Srivastava',
   author_email = 'avikalp22@gmail.com',
