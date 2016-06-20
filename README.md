@@ -8,7 +8,7 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 ###### If Python not Installed 
 Download the zip file (4 MB) from [here](https://goo.gl/dG48U5), extract and run CG-Acc.exe.
 
-You might get a Windows Smart Screen warning since the platform has not yet been certified, however you can click on 'More Info' and then 'Run Anyway'.
+You might get a Windows Smart Screen warning, however you can click on 'More Info' and then 'Run Anyway'.
 
 ###### If Python and Pip Installed 
     
