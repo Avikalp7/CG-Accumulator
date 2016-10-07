@@ -78,7 +78,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # Stores the version of the software
 # Used for Software Update, after matching latest version number available from http://cgaccumulator.blog.com/
-version = '1.2.1'
+version = '1.2.2'
 
 
 def check_for_update(content):
@@ -254,6 +254,14 @@ def take_dep():
         dep = dep.upper()
     return dep
 
+def take_degree():
+    """ Take user input for choice of degree during dept rank evaluation. Return type : int"""  
+    choices = ['1','2','3']
+    degree_choice = raw_input("Select choice for degree 1) Among B.Tech   2) Among Dual     3) Both :  ")
+    while degree_choice not in choices:
+        print "Please enter valid choice!"
+        degree_choice = raw_input("Please enter valid choice for degree again:  ")
+    return int(degree_choice)
 
 def take_sem_num():
     """ Take user input for semester number, validate and return. Return type : int"""
@@ -527,7 +535,7 @@ def find_dep_rank_individual(roll_num, choice = '1', content = ''):
     student_count = 0
     bad_count = 0
     dep_rank = 1
-    while True and roll_count < 30000:######################################################################################################################
+    while True:
         roll_count += 1
         rollno = str(year) + str(dep) + str(roll_count)
         url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + rollno
@@ -559,20 +567,25 @@ def find_dep_rank_individual(roll_num, choice = '1', content = ''):
     return info_list
 
 
-def find_dep_rank_list_CG(year, dep, msc_dep_bool):
+def find_dep_rank_list_CG(year, dep, msc_dep_bool, degree_choice = 3):
     """ Generate and print department ranks for the given batch based on CGPA
 
     Choice Route : 2.1 -> 2 -> Enter Year -> Enter Dep
     Department Rank Based on CG -> Batch
     """
     roll_count = 10000
+    if degree_choice == 2:
+        roll_count = 30000
+        if dep == 'MI':
+            roll_count = 31000
+    # Msc dep bool overrides degree choice decision
     if msc_dep_bool:
         roll_count = 20000
     student_count = 0
     bad_count = 0
     fname = 'Output.txt'
     dep_dict = {}
-    while True and roll_count < 30000:
+    while True:
         roll_count += 1
         rollno = str(year) + str(dep) + str(roll_count)
         url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + rollno
@@ -592,14 +605,14 @@ def find_dep_rank_list_CG(year, dep, msc_dep_bool):
                 dep_dict[name + ' (2)'] = cg
             except KeyError:
                 dep_dict[name] = cg
-        if bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
+        if bad_count >= 5 and (degree_choice == 1 or msc_dep_bool or roll_count > 30000):
+            break
+        elif bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
             roll_count = 30000
             if dep == 'MI':
                 roll_count = 31000
-        elif bad_count >= 5 and ((not msc_dep_bool and roll_count > 30000) or msc_dep_bool):
-            break
     # Sorting names in dict acc to CG in descending order.
-    # TODO : analyze if this is stable or not. If not, make it -_-
+    # TODO : analyze if this is stable or not. If not, modify it as stable sort
     sorted_dep_dict = sorted(dep_dict.items(), key=operator.itemgetter(1), reverse=True)
     index = 0
     prev_rank = 1
@@ -616,20 +629,25 @@ def find_dep_rank_list_CG(year, dep, msc_dep_bool):
     print ''
 
 
-def find_dep_rank_list_SG(year, dep, msc_dep_bool):
+def find_dep_rank_list_SG(year, dep, msc_dep_bool, degree_choice = 3):
     """ Generate and print department ranks for the given batch based on SGPA
 
     Choice Route : 2.2 -> 2 -> Enter Year -> Enter Dep
     Department Rank Based on SG -> Batch
     """
     roll_count = 10000
+    if degree_choice == 2:
+        roll_count = 30000
+        if dep == 'MI':
+            roll_count = 31000
+    # Msc dep bool overrides degree choice decision
     if msc_dep_bool:
         roll_count = 20000
     student_count = 0
     bad_count = 0
     fname = 'Output.txt'
     dep_dict = {}
-    while True and roll_count < 30000:#################################################################
+    while True:
         roll_count += 1
         rollno = str(year) + str(dep) + str(roll_count)
         url_to_scrape = 'https://erp.iitkgp.ernet.in/StudentPerformance/view_performance.jsp?rollno=' + rollno
@@ -649,12 +667,12 @@ def find_dep_rank_list_SG(year, dep, msc_dep_bool):
                 dep_dict[name + ' (2)'] = sg
             except KeyError:
                 dep_dict[name] = sg
-        if bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
+        if bad_count >= 5 and (degree_choice == 1 or msc_dep_bool or roll_count > 30000):
+            break
+        elif bad_count >= 5 and not msc_dep_bool and roll_count < 30000:
             roll_count = 30000
             if dep == 'MI':
                 roll_count = 31000
-        elif bad_count >= 5 and ((not msc_dep_bool and roll_count > 30000) or msc_dep_bool):
-            break
     # Sorting names in dict acc to SG in descending order.
     # TODO : analyze if this is stable or not. If not, make it -_-
     sorted_dep_dict = sorted(dep_dict.items(), key=operator.itemgetter(1), reverse=True)
@@ -1223,11 +1241,15 @@ def take_main_choice():
             year = take_year()
             dep = take_dep()
             msc_dep_bool = is_msc_dep(dep)
+            if not msc_dep_bool:
+                degree_choice = take_degree()
+            else:
+                degree_choice = 3
             print '\nCrunching Data... This may take a couple of minutes or more depending on your OS and internet connection.\n'
             if choice == '2.1':
-                find_dep_rank_list_CG(year, dep, msc_dep_bool)
+                find_dep_rank_list_CG(year, dep, msc_dep_bool, degree_choice)
             elif choice == '2.2':
-                find_dep_rank_list_SG(year, dep, msc_dep_bool)
+                find_dep_rank_list_SG(year, dep, msc_dep_bool, degree_choice)
     elif choice in ['4.1', '4.2']:
         user_roll_num, content = take_roll_num() 
         if choice == '4.1':
@@ -1278,10 +1300,12 @@ def take_main_choice():
         return False
 
 if __name__ == "__main__":
-    print "\n***** Welcome to CG Accumulator *****\n"
+    print "\n********** Welcome to CG Accumulator **********\n"
+    print "Developed by - Avikalp Srivastava"
+    print "To contribute, visit https://github.com/Avikalp7/CG-Accumulator"
     # CONDITION TO CHECK FOR RESULTS AVAILABILITY WILL BE PLACED HERE
     # FOLLOWING BLOCK WILL BE PLACED AFTER PRINTING "***** Welcome to CG Accumulator *****"
-    print "Establishing Connection ........"
+    print "\nEstablishing Connection ........"
     # connecting to a page containing info about latest version
     # content = connect("Output.txt", 'http://cgaccumulator.blog.com/')
     # Checking availability of results.
