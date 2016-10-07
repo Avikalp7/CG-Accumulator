@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
   name = 'CG-Acc',
   packages = ['CG-Acc'], # this must be the same as the name above
-  version = '1.1.2',
+  version = '1.2.1',
   description = 'A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.',
   author = 'Avikalp Srivastava',
   author_email = 'avikalp22@gmail.com',
@@ -30,5 +30,5 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
 
-    install_requires=['requests', 'bs4', 'prettytable', 'eventlet'],
+    install_requires=['requests==2.10.0', 'bs4', 'prettytable', 'eventlet'],
 )
