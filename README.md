@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # CG-Accumulator
 A console-based software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
 
@@ -265,9 +264,3 @@ Function - Summarises important aspects of a semester acc. to prevoius year grad
 
 ![ScreenShot](Screenshots/11_dep_CG.png)
 
-
-
-
-
-
->>>>>>> e127c4324719f1a8b4513bfdf6d4d6c74d5a0c09
