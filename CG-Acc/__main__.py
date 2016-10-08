@@ -1,4 +1,21 @@
-""" A software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
+""" 
+A script to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
+
+# Installation
+# pip install CG-Acc
+
+# Running Script
+# python -m CG-Acc
+
+# Dependencies
+# [requests, bs4, prettytable, eventlet]
+
+# Software Requirements
+# [Python 2.7, pip] 
+
+# Github Repo
+# https://github.com/Avikalp7/CG-Accumulator
+
 
 Important Features:
 1. SEMESTER SUMMARISER
@@ -29,24 +46,21 @@ Important Features:
 Developed by : Avikalp Srivastava
 """
 
-# KEYS -
+# KEYS
+#
 # UPDATE : These are followed by a date and values that need to be updated when that date arrives.
 # (PS can be automated by datetime, but i don't trust that for 1 second.)
 # Issue : Minor to Semi-Major Issues. Please fix.
 # TODO : Enhancements. Please make some. 
 # VULNERABLE : Code that might break , generally if something unusual happens. Please make the code more robust.
 
+
 # TODO List
 # 
 # Cache 
 # Address Vulnerability of performing .find() on user given data
-# TODO's present in code
+# Address TODO's present in code
 
-# Dependencies
-# [requests, bs4, prettytable, eventlet]
-
-# Software Requirements
-# [Python 2.7, pip] 
 
 # Usage : Exception Handling
 from __future__ import with_statement
