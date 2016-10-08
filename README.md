@@ -19,14 +19,20 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
     - An important evaluation whenever a semester ends as the option to find the department rank 
       on the basis of SGPA achieved in most recent results is available.
     - CGPA based evaluation is also available.
-    - Generating a department rank list for the entire batch on above parameters.
+    - Generating a department rank list for the entire batch based on above parameters.
+    - Choice available for finding department rank amongst BTech, Dual Degree and Both.
  
 3. ######DEPARTMENTAL CGPA/SGPA PATTERN DETECTION
     - View average SGPA's and variances for all semesters of your department
-    - Get a prediction of your SGPA for next semester based on previous year trends.
-    - Get a prediction of your SGPA for all upcoming semesters based on the batch that has completed all semesters
+    - Get a prediction of your SGPA for next semester based on previous year trends. [To be added]
+    - Get a prediction of your SGPA for all upcoming semesters based on the batch that has completed all semesters [To be added]
 
-4. ######OTHER FEATURES
+4. ######CGPA / SGPA Lists
+    - View full batch list for CGPA / SGPA History / SGPA
+    - View above for an individual only
+    - Get full performance detail for an individual.
+
+5. ######OTHER FEATURES
     - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
 
 ######Privacy Statement :
