@@ -951,7 +951,7 @@ def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, dep_dict, cont
                         el_dict[sub_name] = {}
                         for item in grade_list:
                             el_dict[sub_name][item] = 0
-                        el_dict[sub_name][sub_grade] += 1
+                        #el_dict[sub_name][sub_grade] += 1
                 elif sub_type.find('Breadth') != -1 or sub_type.find('HSS') != -1:
                     try:
                         br_dict[sub_name]
@@ -960,7 +960,7 @@ def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, dep_dict, cont
                         br_dict[sub_name] = {}
                         for item in grade_list:
                             br_dict[sub_name][item] = 0
-                        br_dict[sub_name][sub_grade] += 1
+                        #br_dict[sub_name][sub_grade] += 1
                 if sub_type.find('Depth') != -1:
                     try:
                         dep_dict[sub_name]
@@ -969,7 +969,7 @@ def get_br_el_sub_name_list(year, dep, sem_num, br_dict, el_dict, dep_dict, cont
                         dep_dict[sub_name] = {}
                         for item in grade_list:
                             dep_dict[sub_name] = [0] * 8
-                        dep_dict[sub_name][sub_grade_dict[sub_grade]] += 1
+                        #dep_dict[sub_name][sub_grade_dict[sub_grade]] += 1
         elif line.find("<tr><td bgcolor=\"#FFF3FF\" colspan=\"2\"><h3 align=\"center\">Semester no:") != -1:
             matchObj = re.match(r'<tr><td bgcolor="#FFF3FF" colspan="2"><h3 align="center">Semester no: ([1-9]).*', line, re.M|re.I)
             if matchObj:
