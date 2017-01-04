@@ -1,5 +1,5 @@
 """ 
-A script to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
+A software to help accumulate CGPA / SGPA data and extract useful results for the students of IIT KGP.
 
 # Installation
 # pip install CG-Acc
@@ -157,8 +157,8 @@ def connect(fname, url_to_scrape):
     #except requests.exceptions.RequestException:
     except Exception:
         # Static var storing then number of times attempt to connect has failed
-        # If >=4, then we assume that user is not connected to the internet.
-        connect.counter += 1
+        # If >=4, then we assume that user is not connected to the internet.       
+	connect.counter += 1
         if connect.counter >= 4:
             connect.counter = 0
             print '\a'
