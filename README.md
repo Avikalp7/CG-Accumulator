@@ -3,7 +3,7 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
 
 
 ### Important Features:
-1. ######SEMESTER SUMMARISER
+1. ###### SEMESTER SUMMARISER
 
     Summarises the important aspects of a particular semester for a department 
     based on previous year grades. The important aspects include:
@@ -15,36 +15,36 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
     - Find the subject that recorded most deregistrations, helping students know in advance about courses that are strict with attendance.
     - Find the most scoring subject - based on number of A's + Ex's, or find the subject with most F's involved. 
  
-2. ######DEPARTMENT RANKS
+2. ###### DEPARTMENT RANKS
     - An important evaluation whenever a semester ends as the option to find the department rank 
       on the basis of SGPA achieved in most recent results is available.
     - CGPA based evaluation is also available.
     - Generating a department rank list for the entire batch based on above parameters.
     - Choice available for finding department rank amongst BTech, Dual Degree and Both.
  
-3. ######DEPARTMENTAL CGPA/SGPA PATTERN DETECTION
+3. ###### DEPARTMENTAL CGPA/SGPA PATTERN DETECTION
     - View average SGPA's and variances for all semesters of your department
     - Get a prediction of your SGPA for next semester based on previous year trends. [To be added]
     - Get a prediction of your SGPA for all upcoming semesters based on the batch that has completed all semesters [To be added]
 
-4. ######CGPA / SGPA Lists
+4. ###### CGPA / SGPA Lists
     - View full batch list for CGPA / SGPA History / SGPA
     - View above for an individual only
     - Get full performance detail for an individual.
 
-5. ######OTHER FEATURES
+5. ###### OTHER FEATURES
     - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
 
-######Privacy Statement :
+###### Privacy Statement :
 The sole aim is to collect data and chalk out useful results and deductions for the benifit of the students. 
 
 
-###Working (Concise)
-######Main Menu
+### Working (Concise)
+###### Main Menu
 ![ScreenShot](Ubuntu_Screenshots/u9.png)
 
 
-######Semester Summariser
+###### Semester Summariser
 Function - Summarises important aspects of a semester acc. to prevoius year grades.
 
 * Grade List for All Subjects (Includeing all breadths and electives)
@@ -59,14 +59,14 @@ Selection - 3.0 -> Dep = CS -> Semester Num = 5
 ![ScreenShot](Ubuntu_Screenshots/u7.png)
 
 
-######Departmental SGPA/CGPA Pattern Detection
+###### Departmental SGPA/CGPA Pattern Detection
 
 * Average SGPA's and Variances for All Semesters of User's Department (Here - HS)
 
 ![ScreenShot](Screenshots/13_all_sem_avg.PNG)
 
 
-######Department Ranks
+###### Department Ranks
 
 For batches, department ranks can be viewed among - 1) Only BTech 2) Only Dual Degree 3) Both
 
@@ -79,7 +79,7 @@ For batches, department ranks can be viewed among - 1) Only BTech 2) Only Dual D
 ![ScreenShot](Ubuntu_Screenshots/u5.png)
 
 
-######CGPA / SGPA Lists
+###### CGPA / SGPA Lists
 
 * CGPA List for a Batch
 
@@ -95,7 +95,7 @@ For batches, department ranks can be viewed among - 1) Only BTech 2) Only Dual D
 
 
 
-######Inidividual Performance
+###### Inidividual Performance
 
 ![ScreenShot](Ubuntu_Screenshots/u8.png)
 
@@ -120,10 +120,10 @@ You might get a Windows Smart Screen warning, however you can click on 'More Inf
 
 
 
-####Linux
+#### Linux
 1. Make sure you have Python 2.7 installed. Open the terminal and enter the 'python' (without quotes) command, if the python shell doesn't run, execute the following commands:
 
-######Debian
+###### Debian
 ```shell
 $ sudo apt-get install python2.7
 $ sudo apt-get install python-pip python-dev build-essential 
@@ -131,7 +131,7 @@ $ sudo pip install --upgrade pip
 $ sudo pip install --upgrade virtualenv 
 ```
 
-######Fedora
+###### Fedora
 ```shell
 $ sudo yum install python2.7 epel-release
 $ sudo yum install -y python-pip
