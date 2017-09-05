@@ -32,9 +32,6 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
     - View above for an individual only
     - Get full performance detail for an individual.
 
-5. ###### OTHER FEATURES
-    - KGP Election Special - Special feature to be added to be active only during elections in KGP to view academic records of candidates to avoid mud-slinging over false data. [To be added]
-
 ###### Privacy Statement :
 The sole aim is to collect data and chalk out useful results and deductions for the benifit of the students. 
 
@@ -104,7 +101,7 @@ For batches, department ranks can be viewed among - 1) Only BTech 2) Only Dual D
 
 ## Installation
 
-####Windows
+#### Windows
 
 ###### If Python not Installed 
 Warning : This is the older privacy version.
