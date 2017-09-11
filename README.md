@@ -67,35 +67,14 @@ Selection - 3.0 -> Dep = CS -> Semester Num = 5
 
 For batches, department ranks can be viewed among - 1) Only BTech 2) Only Dual Degree 3) Both
 
-* Deparment Rank for the Batch 14HS Based on CGPA
-
-![ScreenShot](Ubuntu_Screenshots/u4.png)
-
-* Department Ranks for the Batch 14NA (only BTech)
-
-![ScreenShot](Ubuntu_Screenshots/u5.png)
-
 
 ###### CGPA / SGPA Lists
 
 * CGPA List for a Batch
 
-![ScreenShot](Ubuntu_Screenshots/u1.png)
-
 * SGPA List for a Batch
 
-![ScreenShot](Ubuntu_Screenshots/u2.png)
-
 * Recent SGPA List for a Batch
-
-![ScreenShot](Ubuntu_Screenshots/u3.png)
-
-
-
-###### Inidividual Performance
-
-![ScreenShot](Ubuntu_Screenshots/u8.png)
-
 
 
 
