@@ -8,7 +8,7 @@ A console-based software to help accumulate CGPA / SGPA data and extract useful 
     Summarises the important aspects of a particular semester for a department 
     based on previous year grades. The important aspects include:
     - Know the average SGPA for the semester (based on previous year) to get a fair idea about the semester's difficulty level.
-    - Generating the grade distribution data for all the depth subjects in the previous year
+    - Generating the grade distribution data for all the depth subjects in the previous year.
     - Generate list of all the breadth and elective courses that were actually taken up by previous year students.
     - Generate the grade distribution for these breadth and electives based on students of a particular department only.
     - Sort the depth subjects in decreasing order of 'difficulty' based on a normalised score calculated from the grade distribution.
